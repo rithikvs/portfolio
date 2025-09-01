@@ -24,7 +24,13 @@ function HomePage() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[radial-gradient(1200px_600px_at_100%_0%,rgba(99,102,241,0.15),transparent),radial-gradient(1000px_500px_at_0%_20%,rgba(59,130,246,0.15),transparent)]">
+    <div
+      className="min-h-screen bg-fixed bg-cover bg-center"
+      style={{
+        backgroundImage:
+          "linear-gradient(120deg, rgba(30,41,59,0.85) 0%, rgba(67,56,202,0.7) 100%), url('/bg.jpg')",
+      }}
+    >
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />

@@ -1,7 +1,6 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
-import emailjs from 'emailjs-com'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -16,18 +15,18 @@ export default function Contact() {
     e.preventDefault()
     setLoading(true)
     setStatus(null)
-    // Replace these with your EmailJS values
-    const serviceID = 'your_service_id'
-    const templateID = 'your_template_id'
-    const userID = 'your_user_id'
     try {
-      await emailjs.send(serviceID, templateID, {
-        from_name: form.name,
-        from_email: form.email,
-        message: form.message,
-      }, userID)
-      setStatus('✅ Thanks! Your message has been sent successfully.')
-      setForm({ name: '', email: '', message: '' })
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (res.ok) {
+        setStatus('✅ Thanks! Your message has been sent successfully.')
+        setForm({ name: '', email: '', message: '' })
+      } else {
+        setStatus('❌ Sorry, something went wrong. Please try again later.')
+      }
     } catch (error) {
       setStatus('❌ Sorry, something went wrong. Please try again later.')
     }
@@ -123,3 +122,4 @@ export default function Contact() {
     </section>
   )
 }
+

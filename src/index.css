@@ -27,3 +27,8 @@ html {
     @apply inline-flex items-center gap-2 rounded-lg border border-white/20 px-4 py-2 text-slate-100 hover:bg-white/10 transition;
   }
 }
+
+body {
+  min-height: 100vh;
+  background-color: #1e293b;
+}

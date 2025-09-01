@@ -1,3 +1,5 @@
+import { FaTrophy } from "react-icons/fa"
+
 type Item = { 
   title: string
   issuer?: string
@@ -5,6 +7,7 @@ type Item = {
   link?: string
   certificate?: string
   ppt?: string
+  prize?: string
 }
 
 const certifications: Item[] = [
@@ -18,6 +21,7 @@ const papers: Item[] = [
     issuer: 'Bannari Amman Institute of Technology – INFREIX24', 
     date: '2024', 
     ppt: '/ai-npc-presentation.pdf',
+    prize: '1st Prize'
   },
   { 
     title: 'Land Connect', 
@@ -62,8 +66,15 @@ export default function Achievements() {
           <h3 className="text-xl font-semibold">Paper Presentation</h3>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 mt-4">
             {papers.map((p) => (
-              <article key={p.title} className="card p-6">
-                <h4 className="text-lg font-semibold">{p.title}</h4>
+              <article key={p.title} className="card p-6 relative">
+                <div className="flex items-center gap-2">
+                  <h4 className="text-lg font-semibold">{p.title}</h4>
+                  {p.prize && (
+                    <span className="flex items-center gap-1 text-yellow-500 font-bold text-sm">
+                      <FaTrophy className="text-yellow-500" /> {p.prize}
+                    </span>
+                  )}
+                </div>
                 <p className="text-slate-400">
                   {p.issuer} {p.date && `• ${p.date}`}
                 </p>
