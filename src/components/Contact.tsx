@@ -1,19 +1,37 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
+import emailjs from 'emailjs-com'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState<string | null>(null)
+  const [loading, setLoading] = useState(false)
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    setStatus('✅ Thanks! Your message has been queued. I will get back to you soon.')
-    setForm({ name: '', email: '', message: '' })
+    setLoading(true)
+    setStatus(null)
+    // Replace these with your EmailJS values
+    const serviceID = 'your_service_id'
+    const templateID = 'your_template_id'
+    const userID = 'your_user_id'
+    try {
+      await emailjs.send(serviceID, templateID, {
+        from_name: form.name,
+        from_email: form.email,
+        message: form.message,
+      }, userID)
+      setStatus('✅ Thanks! Your message has been sent successfully.')
+      setForm({ name: '', email: '', message: '' })
+    } catch (error) {
+      setStatus('❌ Sorry, something went wrong. Please try again later.')
+    }
+    setLoading(false)
   }
 
   return (
@@ -95,8 +113,9 @@ export default function Contact() {
           <button
             className="w-full bg-primary-500 hover:bg-primary-600 text-white font-medium py-2 rounded-lg transition"
             type="submit"
+            disabled={loading}
           >
-            Send Message
+            {loading ? 'Sending...' : 'Send Message'}
           </button>
           {status && <p className="text-green-400 text-sm">{status}</p>}
         </form>
