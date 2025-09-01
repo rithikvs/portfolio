@@ -9,7 +9,7 @@ type Item = {
 
 const certifications: Item[] = [
   { title: 'MongoDB', certificate: '/MongoDBAssociateDeveloper_Badge20250406-27-yeb5et.pdf' },
-  { title: 'Oracle', certificate: '/oracle-certificate.pdf' },
+  { title: 'Oracle', certificate: '/oracle certificate.pdf' },
 ]
 
 const papers: Item[] = [
