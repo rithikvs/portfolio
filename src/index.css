@@ -6,13 +6,35 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Animations */
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-wave {
+  animation: wave 1.5s infinite;
+}
+
+.animate-gradient {
+  background-size: 200% auto;
+  animation: gradient 4s linear infinite;
+}
+
 /* Reusable utility */
 @layer components {
   .container-max {
     @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
   }
   .section {
-    @apply py-16 sm:py-20;
+    @apply py-16 sm:py-20 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 min-h-screen flex flex-col justify-center;
   }
   .card {
     @apply rounded-xl border border-white/10 bg-slate-900/50 backdrop-blur shadow-lg hover:shadow-primary-500/20 transition;

@@ -1,123 +1,109 @@
-import { useState, type ChangeEvent, type FormEvent } from 'react'
-import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp, FaTelegram, FaDiscord } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
+import { IoMdCall } from 'react-icons/io'
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
-  const [status, setStatus] = useState<string | null>(null)
-  const [loading, setLoading] = useState(false)
-
-  const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
-
-  const onSubmit = async (e: FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setStatus(null)
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      })
-      if (res.ok) {
-        setStatus('✅ Thanks! Your message has been sent successfully.')
-        setForm({ name: '', email: '', message: '' })
-      } else {
-        setStatus('❌ Sorry, something went wrong. Please try again later.')
-      }
-    } catch (error) {
-      setStatus('❌ Sorry, something went wrong. Please try again later.')
-    }
-    setLoading(false)
-  }
 
   return (
     <section id="contact" className="section py-16">
-      <div className="container mx-auto max-w-5xl grid gap-12 md:grid-cols-2 items-center px-6">
-        
-        {/* Left Side */}
-        <div className="text-center md:text-left">
+      <div className="container mx-auto max-w-5xl px-6">
+        <div className="text-center">
           <h2 className="text-4xl font-bold text-white">Contact Me</h2>
-          <p className="mt-4 text-slate-300 text-lg">
-            Feel free to reach out for collaborations or just a friendly hello 👋
+          <p className="mt-4 text-slate-300 text-lg mx-auto max-w-2xl">
+            Feel free to reach out for collaborations, job opportunities, or just a friendly hello 👋
+            Connect with me through any of these platforms:
           </p>
+        </div>
 
-          {/* Social Links */}
-          <div className="mt-8 flex justify-center md:justify-start gap-6">
+        {/* Contact Cards */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          {/* Email Card */}
+          <div className="card bg-white/5 border border-white/10 rounded-2xl p-8 shadow-xl hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-20 h-20 flex items-center justify-center bg-primary-500/20 rounded-full mb-6 transform transition-transform hover:scale-110">
+                <MdEmail size={40} className="text-primary-500" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-3">Email</h3>
+              <p className="text-slate-300 mb-4">Drop me an email anytime</p>
+              <div className="flex flex-col items-center w-full">
+                <a
+                  href="mailto:rithikvs08@gmail.com?subject=Portfolio%20Contact&body=Hello%20Rithik,%0A%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20connect.%0A%0ABest%20regards,%0A"
+                  className="w-full px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-300 text-center font-medium"
+                >
+                  rithikvs08@gmail.com
+                </a>
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=rithikvs08@gmail.com&su=Portfolio Contact&body=Hello Rithik,%0A%0AI saw your portfolio and would like to connect.%0A%0ABest regards,%0A"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-3 w-full px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-300 flex items-center justify-center gap-2 font-medium"
+                >
+                  <MdEmail size={20} /> Open in Gmail
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Phone Card */}
+          <div className="card bg-white/5 border border-white/10 rounded-2xl p-8 shadow-xl hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-20 h-20 flex items-center justify-center bg-primary-500/20 rounded-full mb-6 transform transition-transform hover:scale-110">
+                <IoMdCall size={40} className="text-primary-500" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-3">Phone</h3>
+              <p className="text-slate-300 mb-4">Call me during business hours</p>
+              <a
+                href="tel:+917708552461"
+                className="w-full px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-300 text-center font-medium"
+              >
+                +91 7708552461
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Social Media Links */}
+        <div className="mt-16 bg-white/5 border border-white/10 rounded-2xl p-8 shadow-xl max-w-3xl mx-auto">
+          <h3 className="text-2xl font-bold text-white text-center mb-8">Connect on Social Media</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <a
               href="https://github.com/rithikvs"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 text-slate-300 hover:text-white transition"
+              className="flex flex-col items-center gap-3 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1 group"
             >
-              <FaGithub size={28} /> GitHub
+              <FaGithub size={32} className="text-slate-300 group-hover:text-white transition-colors" />
+              <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">GitHub</span>
             </a>
             <a
               href="https://www.linkedin.com/in/rithik-v-s-519059320/"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 text-slate-300 hover:text-white transition"
+              className="flex flex-col items-center gap-3 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1 group"
             >
-              <FaLinkedin size={28} /> LinkedIn
+              <FaLinkedin size={32} className="text-slate-300 group-hover:text-white transition-colors" />
+              <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">LinkedIn</span>
             </a>
-           
             <a
-              href="mailto:rithikvs08@gmail.com"
-              className="flex items-center gap-2 text-slate-300 hover:text-white transition"
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="flex flex-col items-center gap-3 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1 group"
             >
-              <MdEmail size={28} /> Email
+              <FaInstagram size={32} className="text-slate-300 group-hover:text-white transition-colors" />
+              <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">Instagram</span>
+            </a>
+            <a
+              href="https://t.me/rithikvs"
+              target="_blank"
+              rel="noreferrer"
+              className="flex flex-col items-center gap-3 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1 group"
+            >
+              <FaTelegram size={32} className="text-slate-300 group-hover:text-white transition-colors" />
+              <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">Telegram</span>
             </a>
           </div>
         </div>
-
-        {/* Right Side - Contact Form */}
-        <form
-          onSubmit={onSubmit}
-          className="card bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg space-y-5"
-        >
-          <div>
-            <label className="block text-sm text-slate-300 mb-1">Name</label>
-            <input
-              name="name"
-              value={form.name}
-              onChange={onChange}
-              required
-              className="w-full rounded-lg bg-white/10 border border-white/20 px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
-            />
-          </div>
-          <div>
-            <label className="block text-sm text-slate-300 mb-1">Email</label>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={onChange}
-              required
-              className="w-full rounded-lg bg-white/10 border border-white/20 px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
-            />
-          </div>
-          <div>
-            <label className="block text-sm text-slate-300 mb-1">Message</label>
-            <textarea
-              name="message"
-              value={form.message}
-              onChange={onChange}
-              required
-              rows={4}
-              className="w-full rounded-lg bg-white/10 border border-white/20 px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
-            />
-          </div>
-          <button
-            className="w-full bg-primary-500 hover:bg-primary-600 text-white font-medium py-2 rounded-lg transition"
-            type="submit"
-            disabled={loading}
-          >
-            {loading ? 'Sending...' : 'Send Message'}
-          </button>
-          {status && <p className="text-green-400 text-sm">{status}</p>}
-        </form>
       </div>
     </section>
   )

@@ -48,7 +48,7 @@ export default function Education() {
                 {e.details && <p className="text-slate-400 text-sm mt-1">{e.details}</p>}
                 {e.marksheet && (
                   <a
-                    href={encodeURI(e.marksheet)}   // ✅ Encodes spaces automatically
+                    href={encodeURI(e.marksheet)}  
                     target="_blank"
                     rel="noreferrer"
                     className="mt-3 inline-block btn-outline"
