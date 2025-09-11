@@ -1,4 +1,5 @@
 import { FaTrophy } from "react-icons/fa"
+import { useCallback } from "react"
 
 type Item = { 
   title: string
@@ -20,18 +21,29 @@ const papers: Item[] = [
     title: 'AI-Driven Adaptive NPC Personalities in Video Games', 
     issuer: 'Bannari Amman Institute of Technology – INFREIX24', 
     date: '2024', 
-    ppt: '/ai-npc-presentation.pdf',
-    prize: '1st Prize'
+    ppt: 'yoyo.pdf', // Make sure this file exists in public/
+    link: '' 
   },
   { 
-    title: 'Land Connect', 
-    issuer: 'Kongu Engineering College – SIGININ 2024', 
-    date: '2024',
-    ppt: '/land-connect-presentation.pdf'
+    title: 'A real-time Indian language communication assistant for the Deaf and hard of hearing.', 
+    issuer: 'Kongu Engineering College – SIGININ 2025', 
+    date: '2025',
+    ppt: 'sigin.pdf' // Make sure this file exists in public/
   },
 ]
 
 export default function Achievements() {
+  // Helper to open ppt/pptx in Google Docs Viewer
+  const handleViewPPT = useCallback((ppt: string) => {
+    let isPPTX = ppt.endsWith('.ppt') || ppt.endsWith('.pptx');
+    let url = ppt;
+    if (isPPTX) {
+      const origin = window.location.origin;
+      url = `https://docs.google.com/gview?url=${origin}${ppt.startsWith('/') ? ppt : '/' + ppt}&embedded=true`;
+    }
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }, []);
+
   return (
     <section id="achievements" className="section">
       <div className="container-max">
@@ -66,40 +78,30 @@ export default function Achievements() {
           <h3 className="text-xl font-semibold">Paper Presentation</h3>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 mt-4">
             {papers.map((p) => (
-              <article key={p.title} className="card p-6 relative">
-                <div className="flex items-center gap-2">
-                  <h4 className="text-lg font-semibold">{p.title}</h4>
-                  {p.prize && (
-                    <span className="flex items-center gap-1 text-yellow-500 font-bold text-sm">
-                      <FaTrophy className="text-yellow-500" /> {p.prize}
-                    </span>
-                  )}
-                </div>
+              <article key={p.title} className="card p-6">
+                <h4 className="text-lg font-semibold">{p.title}</h4>
                 <p className="text-slate-400">
                   {p.issuer} {p.date && `• ${p.date}`}
                 </p>
-                <div className="mt-3 flex gap-2">
-                  {p.link && (
-                    <a 
-                      href={p.link} 
-                      target="_blank" 
-                      rel="noreferrer" 
-                      className="btn-outline"
-                    >
-                      View
-                    </a>
-                  )}
-                  {p.ppt && (
-                    <a
-                      href={encodeURI(p.ppt)}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="btn-outline"
-                    >
-                      View PPT
-                    </a>
-                  )}
-                </div>
+                {p.link && p.link !== '' && (
+                  <a 
+                    href={p.link} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="mt-3 inline-block btn-outline"
+                  >
+                    View
+                  </a>
+                )}
+                {p.ppt && (
+                  <button
+                    type="button"
+                    className="mt-3 inline-block btn-outline"
+                    onClick={() => handleViewPPT(p.ppt!)}
+                  >
+                    View PPT
+                  </button>
+                )}
               </article>
             ))}
           </div>

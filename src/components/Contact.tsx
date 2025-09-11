@@ -94,7 +94,7 @@ export default function Contact() {
               <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">Instagram</span>
             </a>
             <a
-              href="https://t.me/rithikvs"
+              href="https://web.telegram.org/a/"
               target="_blank"
               rel="noreferrer"
               className="flex flex-col items-center gap-3 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1 group"
