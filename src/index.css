@@ -4,6 +4,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for fixed navbar */
 }
 
 /* Animations */
@@ -34,23 +35,47 @@ html {
     @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
   }
   .section {
-    @apply py-16 sm:py-20 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 min-h-screen flex flex-col justify-center;
+    @apply py-20 sm:py-24 bg-gradient-to-br from-blue-950/40 via-blue-900/50 to-slate-950/60 min-h-screen flex flex-col justify-center;
   }
   .card {
-    @apply rounded-xl border border-white/10 bg-slate-900/50 backdrop-blur shadow-lg hover:shadow-primary-500/20 transition;
+    @apply rounded-xl border border-blue-300/40 bg-gradient-to-br from-blue-950/20 to-blue-900/10 backdrop-blur-lg shadow-xl hover:shadow-blue-500/40 transition-all duration-300;
   }
   .badge {
-    @apply inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-3 py-1 text-sm text-slate-200;
+    @apply inline-flex items-center gap-2 rounded-full bg-blue-500/30 border border-blue-300/50 px-3 py-1 text-sm text-blue-100 font-medium;
   }
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 font-medium text-white shadow hover:opacity-90 transition;
+    @apply inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-blue-500 to-blue-700 px-4 py-2 font-medium text-white shadow-lg hover:from-blue-600 hover:to-blue-800 hover:shadow-blue-500/60 transition-all duration-300;
   }
   .btn-outline {
-    @apply inline-flex items-center gap-2 rounded-lg border border-white/20 px-4 py-2 text-slate-100 hover:bg-white/10 transition;
+    @apply inline-flex items-center gap-2 rounded-lg border border-blue-300/60 px-4 py-2 text-blue-100 hover:bg-blue-500/30 hover:border-blue-200 transition-all duration-300;
   }
 }
 
 body {
   min-height: 100vh;
-  background-color: #1e293b;
+  background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+  color: #f1f5f9;
+}
+
+/* Smooth scrolling for all browsers */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(30, 58, 138, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
 }

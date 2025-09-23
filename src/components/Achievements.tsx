@@ -1,5 +1,5 @@
 import { FaTrophy } from "react-icons/fa"
-import { useCallback } from "react"
+import { useState, useCallback } from "react"
 
 type Item = { 
   title: string
@@ -16,23 +16,45 @@ const certifications: Item[] = [
   { title: 'Oracle', certificate: '/oracle certificate.pdf' },
 ]
 
+const hackathons: Item[] = [
+  {
+    title: "BYTS India Hackathon (BIH) 1.0 ",
+    issuer: "BYTS India and powered by Nunnari Labs",
+    date: "April 11&12 2025",
+    certificate: "bytes.pdf",
+    prize: "Finalist"
+  },
+  {
+    title: "2nd AI/ML CHALLENGE",
+    issuer: "IIT MADRAS",
+    date: "2023",
+    certificate: "iit madras.pdf",
+    prize: "participated"
+  }
+]
+
 const papers: Item[] = [
-  { 
-    title: 'AI-Driven Adaptive NPC Personalities in Video Games', 
-    issuer: 'Bannari Amman Institute of Technology – INFREIX24', 
-    date: '2024', 
-    ppt: 'yoyo.pdf', // Make sure this file exists in public/
+  {
+    title: 'AI-Driven Adaptive NPC Personalities in Video Games',
+    issuer: 'Bannari Amman Institute of Technology – INFREIX24',
+    date: '6th NOVEMBER2024',
+    certificate: 'bannari.pdf',
+    ppt: 'yoyo.pdf',
     link: '' 
   },
-  { 
-    title: 'A real-time Indian language communication assistant for the Deaf and hard of hearing.', 
-    issuer: 'Kongu Engineering College – SIGININ 2025', 
-    date: '2025',
-    ppt: 'sigin.pdf' // Make sure this file exists in public/
+  {
+    title: 'A real-time Indian language communication assistant for the Deaf and hard of hearing.',
+    issuer: 'Kongu Engineering College – SIGININ 2025',
+    date: '2024',
+    certificate: 'sigin24.pdf',
+    ppt: 'sigin.pdf'
   },
 ]
 
 export default function Achievements() {
+  const [showHackathon, setShowHackathon] = useState(false)
+  const [showPaper, setShowPaper] = useState(false)
+
   // Helper to open ppt/pptx in Google Docs Viewer
   const handleViewPPT = useCallback((ppt: string) => {
     let isPPTX = ppt.endsWith('.ppt') || ppt.endsWith('.pptx');
@@ -43,6 +65,10 @@ export default function Achievements() {
     }
     window.open(url, '_blank', 'noopener,noreferrer');
   }, []);
+
+  const handleViewPDF = useCallback((pdf: string) => {
+    window.open(pdf, '_blank', 'noopener,noreferrer')
+  }, [])
 
   return (
     <section id="achievements" className="section">
@@ -73,37 +99,77 @@ export default function Achievements() {
           </div>
         </div>
 
-        {/* Paper Presentations */}
-        <div className="mt-8">
-          <h3 className="text-xl font-semibold">Paper Presentation</h3>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 mt-4">
-            {papers.map((p) => (
-              <article key={p.title} className="card p-6">
-                <h4 className="text-lg font-semibold">{p.title}</h4>
-                <p className="text-slate-400">
-                  {p.issuer} {p.date && `• ${p.date}`}
-                </p>
-                {p.link && p.link !== '' && (
-                  <a 
-                    href={p.link} 
-                    target="_blank" 
-                    rel="noreferrer" 
-                    className="mt-3 inline-block btn-outline"
-                  >
-                    View
-                  </a>
-                )}
-                {p.ppt && (
-                  <button
-                    type="button"
-                    className="mt-3 inline-block btn-outline"
-                    onClick={() => handleViewPPT(p.ppt!)}
-                  >
-                    View PPT
-                  </button>
-                )}
-              </article>
-            ))}
+        {/* Hackathon Dropdown */}
+        <div className="mt-10">
+          <button
+            className="btn-primary px-6 py-2 rounded-full font-semibold shadow hover:scale-105 transition"
+            onClick={() => setShowHackathon((v) => !v)}
+          >
+            {showHackathon ? "Hide Hackathon Achievements" : "Show Hackathon Achievements"}
+          </button>
+          
+          {/* Fixed height container to prevent layout shift */}
+          <div className={`transition-all duration-500 overflow-hidden ${showHackathon ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+            <div className="mt-6 space-y-4">
+              {hackathons.map((h) => (
+                <div key={h.title} className="card p-4">
+                  <h4 className="text-lg font-semibold">{h.title}</h4>
+                  <p className="text-slate-400 text-sm">{h.issuer} {h.date && `• ${h.date}`}</p>
+                  {h.prize && <p className="text-green-400 font-semibold mt-1 text-sm">Prize: {h.prize}</p>}
+                  {h.certificate && (
+                    <button
+                      type="button"
+                      className="mt-2 btn-outline text-sm px-3 py-1"
+                      onClick={() => handleViewPDF(h.certificate!)}
+                    >
+                      View Certificate
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Paper Presentation Dropdown */}
+        <div className="mt-10">
+          <button
+            className="btn-primary px-6 py-2 rounded-full font-semibold shadow hover:scale-105 transition"
+            onClick={() => setShowPaper((v) => !v)}
+          >
+            {showPaper ? "Hide Paper Presentations" : "Show Paper Presentations"}
+          </button>
+          
+          {/* Fixed height container to prevent layout shift */}
+          <div className={`transition-all duration-500 overflow-hidden ${showPaper ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+            <div className="mt-6 space-y-4">
+              {papers.map((p) => (
+                <div key={p.title} className="card p-4">
+                  <h4 className="text-lg font-semibold">{p.title}</h4>
+                  <p className="text-slate-400 text-sm">{p.issuer} {p.date && `• ${p.date}`}</p>
+                  <div className="flex gap-2 mt-2">
+                    {p.certificate && (
+                      <button
+                        type="button"
+                        className="btn-outline text-sm px-3 py-1"
+                        onClick={() => handleViewPDF(p.certificate!)}
+                      >
+                        View Certificate
+                      </button>
+                    )}
+                    {p.ppt && (
+                      <button
+                        type="button"
+                        className="btn-outline text-sm px-3 py-1"
+                        onClick={() => handleViewPPT(p.ppt!)}
+                      >
+                        View PPT
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

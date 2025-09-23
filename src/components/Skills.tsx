@@ -98,9 +98,15 @@ export default function Skills() {
         </div>
 
         {/* Extra content section */}
-        <div className="mt-16 max-w-2xl mx-auto text-slate-300 leading-relaxed text-center">
+        <div className="mt-16 max-w-3xl mx-auto text-slate-300 leading-relaxed text-center">
           <p>
-            Passionate about building full-stack applications and always eager to learn new technologies. Adaptable, collaborative, and focused on delivering impactful digital solutions.
+            I enjoy building <b>end-to-end applications</b>, from designing interactive user interfaces
+            to creating powerful backend APIs and managing databases. My experience spans across
+            different tech stacks, allowing me to adapt quickly to new challenges.
+          </p>
+          <p className="mt-4">
+            Currently, I’m exploring <b>cloud deployment, DevOps practices, and advanced frontend
+            optimizations</b> to further enhance my development workflow.
           </p>
         </div>
       </div>
