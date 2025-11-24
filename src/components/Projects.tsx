@@ -3,6 +3,7 @@ type Project = {
   description: string
   tech: string[]
   github: string
+  demo?: string
   image: string
 }
 
@@ -13,6 +14,7 @@ const projects: Project[] = [
       'A professional e-commerce platform for handmade crafts, built with React frontend and Node.js backend with MongoDB.',
     tech: ['React', 'Node.js', 'Express', 'MongoDB'],
     github: 'https://github.com/rithikvs/e-commerse-fullstack',
+    demo: 'http://e-commerse-fullstack.vercel.app',
     image: 'ecommerse.jpg', // 🔹 place image in public/images/
   },
   {
@@ -68,15 +70,27 @@ export default function Projects() {
                 ))}
               </div>
 
-              {/* 🔹 Consistent green button */}
-              <a
-                href={p.github}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-4 btn-success"
-              >
-                💻 GitHub
-              </a>
+              {/* 🔹 Action buttons */}
+              <div className="mt-4 flex flex-wrap gap-3 justify-center">
+                <a
+                  href={p.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-success"
+                >
+                  💻 GitHub
+                </a>
+                {p.demo && (
+                  <a
+                    href={p.demo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-primary"
+                  >
+                    🚀 Live Demo
+                  </a>
+                )}
+              </div>
             </article>
           ))}
         </div>

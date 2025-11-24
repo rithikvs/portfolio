@@ -39,86 +39,87 @@ export default function Skills() {
           A showcase of the technologies and soft skills I use to build modern, scalable, and efficient applications.
         </p>
 
-        {/* Grid layout */}
-        <div className="flex flex-col gap-10 max-w-4xl mx-auto">
+        {/* Grid layout - 2 columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
           {/* Programming */}
-          <div className="card flex flex-col bg-white/5 border border-white/10 rounded-2xl shadow-xl p-8">
-            <div className="flex items-center mb-4">
-              <Code className="w-8 h-8 text-cyan-400 mr-3" />
-              <SectionTitle title="Programming" subtitle="Core coding skills I rely on" />
+          <div className="card flex flex-col bg-white/5 border border-white/10 rounded-2xl shadow-xl p-6">
+            <div className="flex items-center mb-3">
+              <Code className="w-7 h-7 text-cyan-400 mr-2" />
+              <h3 className="text-lg font-bold text-white">Programming</h3>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {programmingSkills.map((l) => <Badge key={l} label={l} />)}
             </div>
           </div>
 
           {/* Libraries */}
-          <div className="card flex flex-col bg-white/5 border border-white/10 rounded-2xl shadow-xl p-8">
-            <div className="flex items-center mb-4">
-              <Library className="w-8 h-8 text-blue-400 mr-3" />
-              <SectionTitle title="Libraries" subtitle="Frontend tools I use" />
+          <div className="card flex flex-col bg-white/5 border border-white/10 rounded-2xl shadow-xl p-6">
+            <div className="flex items-center mb-3">
+              <Library className="w-7 h-7 text-blue-400 mr-2" />
+              <h3 className="text-lg font-bold text-white">Libraries</h3>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {libraries.map((l) => <Badge key={l} label={l} />)}
             </div>
           </div>
 
           {/* Frameworks */}
-          <div className="card flex flex-col bg-white/5 border border-white/10 rounded-2xl shadow-xl p-8">
-            <div className="flex items-center mb-4">
-              <Layers className="w-8 h-8 text-cyan-300 mr-3" />
-              <SectionTitle title="Frameworks" subtitle="Building scalable backends" />
+          <div className="card flex flex-col bg-white/5 border border-white/10 rounded-2xl shadow-xl p-6">
+            <div className="flex items-center mb-3">
+              <Layers className="w-7 h-7 text-cyan-300 mr-2" />
+              <h3 className="text-lg font-bold text-white">Frameworks</h3>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {frameworks.map((l) => <Badge key={l} label={l} />)}
             </div>
           </div>
 
           {/* Databases */}
-          <div className="card flex flex-col bg-white/5 border border-white/10 rounded-2xl shadow-xl p-8">
-            <div className="flex items-center mb-4">
-              <Database className="w-8 h-8 text-blue-300 mr-3" />
-              <SectionTitle title="Databases" subtitle="Storage and data management" />
+          <div className="card flex flex-col bg-white/5 border border-white/10 rounded-2xl shadow-xl p-6">
+            <div className="flex items-center mb-3">
+              <Database className="w-7 h-7 text-blue-300 mr-2" />
+              <h3 className="text-lg font-bold text-white">Databases</h3>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {databases.map((l) => <Badge key={l} label={l} />)}
             </div>
           </div>
 
-          {/* Soft Skills */}
-          <div className="card flex flex-col bg-white/5 border border-white/10 rounded-2xl shadow-xl p-8">
-            <div className="flex items-center mb-4">
-              <span className="w-8 h-8 flex items-center justify-center mr-3 text-cyan-300 text-2xl">🤝</span>
-              <SectionTitle title="Soft Skills" subtitle="Professional & personal strengths" />
+          {/* Soft Skills - Full Width */}
+          <div className="card flex flex-col bg-white/5 border border-white/10 rounded-2xl shadow-xl p-6 md:col-span-2">
+            <div className="flex items-center justify-center mb-3">
+              <span className="w-7 h-7 flex items-center justify-center mr-2 text-cyan-300 text-xl">🤝</span>
+              <h3 className="text-lg font-bold text-white">Soft Skills</h3>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2 justify-center">
               {softSkills.map((l) => <Badge key={l} label={l} />)}
             </div>
           </div>
         </div>
 
-        {/* Extra content section */}
-        <div className="mt-16 max-w-3xl mx-auto text-slate-300 leading-relaxed text-center">
-          <p>
-            I enjoy building <b>end-to-end applications</b>, from designing interactive user interfaces
-            to creating powerful backend APIs and managing databases. My experience spans across
-            different tech stacks, allowing me to adapt quickly to new challenges.
-          </p>
-          <p className="mt-4">
-            Currently, I'm exploring <b>cloud deployment, DevOps practices, and advanced frontend
-            optimizations</b> to further enhance my development workflow.
-          </p>
-          
-          {/* LeetCode Profile Link */}
-          <div className="mt-8">
-            <a
-              href="https://leetcode.com/u/rithikvs/"
-              target="_blank"
-              rel="noreferrer"
-              className="btn-success inline-flex items-center gap-2 px-6 py-3"
-            >
-              💻 View My LeetCode Profile
-            </a>
+        {/* LeetCode Profile Link - Centered */}
+        <div className="mt-8 flex justify-center">
+          <a
+            href="https://leetcode.com/u/rithikvs/"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-success inline-flex items-center gap-2 px-6 py-3"
+          >
+            💻 View My LeetCode Profile
+          </a>
+        </div>
+
+        {/* Extra content section - Below LeetCode */}
+        <div className="mt-8 max-w-3xl mx-auto text-center">
+          <div className="text-slate-200 leading-relaxed">
+            <p className="text-base">
+              I enjoy building <b className="text-cyan-300">end-to-end applications</b>, from designing interactive user interfaces
+              to creating powerful backend APIs and managing databases.
+            </p>
+            <p className="mt-3 text-base">
+              Currently exploring <b className="text-cyan-300">cloud deployment, DevOps practices, and advanced frontend
+              optimizations</b>.
+            </p>
           </div>
         </div>
       </div>
