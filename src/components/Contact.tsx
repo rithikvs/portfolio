@@ -32,14 +32,7 @@ export default function Contact() {
                 >
                   rithikvs08@gmail.com
                 </a>
-                <a
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=rithikvs08@gmail.com&su=Portfolio Contact&body=Hello Rithik,%0A%0AI saw your portfolio and would like to connect.%0A%0ABest regards,%0A"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-3 w-full btn-outline flex items-center justify-center gap-2"
-                >
-                  <MdEmail size={20} /> Open in Gmail
-                </a>
+                
               </div>
             </div>
           </div>
