@@ -58,42 +58,33 @@ export default function Contact() {
         {/* Social Media Links */}
         <div className="mt-16 bg-slate-800/70 border-2 border-slate-700/60 rounded-2xl p-8 shadow-xl max-w-3xl mx-auto">
           <h3 className="text-2xl font-bold text-white text-center mb-8 drop-shadow-md">Connect on Social Media</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <a
-              href="https://github.com/rithikvs"
-              target="_blank"
-              rel="noreferrer"
-              className="flex flex-col items-center gap-3 p-4 rounded-xl bg-slate-700/50 hover:bg-slate-600/70 border-2 border-slate-600/50 hover:border-cyan-500/60 transition-all duration-300 transform hover:-translate-y-1 group"
-            >
-              <FaGithub size={32} className="text-slate-100 group-hover:text-cyan-300 transition-colors" />
-              <span className="text-sm font-semibold text-slate-100 group-hover:text-white transition-colors">GitHub</span>
-            </a>
+          <div className="flex flex-wrap justify-center gap-6">
             <a
               href="https://www.linkedin.com/in/rithik-v-s-519059320/"
               target="_blank"
               rel="noreferrer"
-              className="flex flex-col items-center gap-3 p-4 rounded-xl bg-slate-700/50 hover:bg-slate-600/70 border-2 border-slate-600/50 hover:border-cyan-500/60 transition-all duration-300 transform hover:-translate-y-1 group"
+              className="flex flex-col items-center gap-3 p-6 rounded-xl bg-slate-700/50 hover:bg-slate-600/70 border-2 border-slate-600/50 hover:border-cyan-500/60 transition-all duration-300 transform hover:-translate-y-1 group w-32"
             >
-              <FaLinkedin size={32} className="text-slate-100 group-hover:text-cyan-300 transition-colors" />
+              <FaLinkedin size={36} className="text-slate-100 group-hover:text-cyan-300 transition-colors" />
               <span className="text-sm font-semibold text-slate-100 group-hover:text-white transition-colors">LinkedIn</span>
             </a>
             <a
               href="https://www.instagram.com/"
               target="_blank"
               rel="noreferrer"
-              className="flex flex-col items-center gap-3 p-4 rounded-xl bg-slate-700/50 hover:bg-slate-600/70 border-2 border-slate-600/50 hover:border-cyan-500/60 transition-all duration-300 transform hover:-translate-y-1 group"
+              className="flex flex-col items-center gap-3 p-6 rounded-xl bg-slate-700/50 hover:bg-slate-600/70 border-2 border-slate-600/50 hover:border-cyan-500/60 transition-all duration-300 transform hover:-translate-y-1 group w-32"
             >
-              <FaInstagram size={32} className="text-slate-100 group-hover:text-cyan-300 transition-colors" />
+              <FaInstagram size={36} className="text-slate-100 group-hover:text-cyan-300 transition-colors" />
               <span className="text-sm font-semibold text-slate-100 group-hover:text-white transition-colors">Instagram</span>
             </a>
             <a
-              href="https://web.telegram.org/a/"
+              href="https://wa.me/917708552461"
               target="_blank"
               rel="noreferrer"
-              className="flex flex-col items-center gap-3 p-4 rounded-xl bg-slate-700/50 hover:bg-slate-600/70 border-2 border-slate-600/50 hover:border-cyan-500/60 transition-all duration-300 transform hover:-translate-y-1 group"
+              className="flex flex-col items-center gap-3 p-6 rounded-xl bg-slate-700/50 hover:bg-slate-600/70 border-2 border-slate-600/50 hover:border-cyan-500/60 transition-all duration-300 transform hover:-translate-y-1 group w-32"
             >
-              <FaTelegram size={32} className="text-slate-100 group-hover:text-cyan-300 transition-colors" />
-              <span className="text-sm font-semibold text-slate-100 group-hover:text-white transition-colors">Telegram</span>
+              <FaWhatsapp size={36} className="text-slate-100 group-hover:text-cyan-300 transition-colors" />
+              <span className="text-sm font-semibold text-slate-100 group-hover:text-white transition-colors">WhatsApp</span>
             </a>
           </div>
         </div>

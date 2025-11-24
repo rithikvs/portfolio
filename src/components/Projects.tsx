@@ -94,6 +94,18 @@ export default function Projects() {
             </article>
           ))}
         </div>
+
+        {/* GitHub Profile Button */}
+        <div className="mt-8 flex justify-center">
+          <a
+            href="https://github.com/rithikvs"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-success"
+          >
+            💻 View All Projects on GitHub
+          </a>
+        </div>
       </div>
     </section>
   )
