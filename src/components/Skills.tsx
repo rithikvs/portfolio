@@ -100,7 +100,7 @@ export default function Skills() {
         {/* LeetCode Profile Link - Centered */}
         <div className="mt-8 flex justify-center">
           <a
-            href="https://leetcode.com/u/rithikvs/"
+            href="https://leetcode.com/u/Rithik_vs/"
             target="_blank"
             rel="noreferrer"
             className="btn-success inline-flex items-center gap-2 px-6 py-3"
