@@ -19,7 +19,7 @@ html {
     @apply rounded-xl border-2 border-slate-700/60 bg-slate-800/70 backdrop-blur-sm shadow-xl shadow-black/30 hover:shadow-2xl hover:shadow-cyan-500/30 hover:border-cyan-500/60 transition-all duration-300;
   }
   .badge {
-    @apply inline-flex items-center gap-2 rounded-full bg-slate-700/80 border-2 border-cyan-400/70 px-3 py-1.5 text-sm text-cyan-50 font-semibold;
+    @apply inline-flex items-center gap-2 rounded-full bg-slate-700/80 px-3 py-1.5 text-sm text-cyan-50 font-semibold;
   }
   .btn-primary {
     @apply inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 px-5 py-2.5 font-semibold text-white shadow-md shadow-cyan-500/30 hover:from-cyan-500 hover:to-blue-500 hover:shadow-lg hover:shadow-cyan-400/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200;

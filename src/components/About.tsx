@@ -48,16 +48,16 @@ export default function About() {
                 <span className="font-semibold text-cyan-300">Father's Name:</span> <span className="text-white">SUBRAMANIYAN R</span>
               </li>
               <li className="p-3 bg-white/5 rounded-lg">
-                <span className="font-semibold text-cyan-300">Mother's Name:</span> <span className="text-white">SATHYA S</span>
+                <span className="font-semibold text-cyan-300">Mother's Name:</span> <span className="text-white">JEYAKODI N</span>
               </li>
               <li className="p-3 bg-white/5 rounded-lg">
                 <span className="font-semibold text-cyan-300">Nationality:</span> <span className="text-white">Indian</span>
               </li>
               <li className="p-3 bg-white/5 rounded-lg">
-                <span className="font-semibold text-cyan-300">Languages:</span> <span className="text-white">English, Tamil</span>
+                <span className="font-semibold text-cyan-300">Languages:</span> <span className="text-white">English, Tamil, HINDI(basic)</span>
               </li>
               <li className="p-3 bg-white/5 rounded-lg">
-                <span className="font-semibold text-cyan-300">Hobbies:</span> <span className="text-white">Coding, Gaming, Music</span>
+                <span className="font-semibold text-cyan-300">Hobbies:</span> <span className="text-white">playing chess, solving puzzles</span>
               </li>
             </ul>
           </div>

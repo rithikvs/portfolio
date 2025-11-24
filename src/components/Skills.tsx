@@ -105,9 +105,21 @@ export default function Skills() {
             different tech stacks, allowing me to adapt quickly to new challenges.
           </p>
           <p className="mt-4">
-            Currently, I’m exploring <b>cloud deployment, DevOps practices, and advanced frontend
+            Currently, I'm exploring <b>cloud deployment, DevOps practices, and advanced frontend
             optimizations</b> to further enhance my development workflow.
           </p>
+          
+          {/* LeetCode Profile Link */}
+          <div className="mt-8">
+            <a
+              href="https://leetcode.com/u/rithikvs/"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-success inline-flex items-center gap-2 px-6 py-3"
+            >
+              💻 View My LeetCode Profile
+            </a>
+          </div>
         </div>
       </div>
     </section>
