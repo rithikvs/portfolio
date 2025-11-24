@@ -87,13 +87,13 @@ export default function Achievements() {
         {/* Horizontal toggle buttons */}
         <div className="mt-6 flex items-center justify-center gap-3">
           <button
-            className={`btn-light ${tab === 'hackathon' ? 'ring-2 ring-primary-500' : ''}`}
+            className={`btn-light ${tab === 'hackathon' ? 'ring-2 ring-cyan-600 !bg-cyan-700 !text-white shadow-md shadow-cyan-600/30' : ''}`}
             onClick={() => setTab('hackathon')}
           >
             Hackathons
           </button>
           <button
-            className={`btn-light ${tab === 'papers' ? 'ring-2 ring-primary-500' : ''}`}
+            className={`btn-light ${tab === 'papers' ? 'ring-2 ring-cyan-600 !bg-cyan-700 !text-white shadow-md shadow-cyan-600/30' : ''}`}
             onClick={() => setTab('papers')}
           >
             Paper Presentations
@@ -105,21 +105,21 @@ export default function Achievements() {
           {tab === 'hackathon' ? (
             hackathons.map((h) => (
               <article key={h.title} className="card p-6">
-                <h3 className="text-lg font-semibold text-slate-900">{h.title}</h3>
-                <p className="mt-1 text-slate-700 text-sm">
+                <h3 className="text-xl font-bold text-white drop-shadow-md">{h.title}</h3>
+                <p className="mt-2 text-slate-100 text-base font-medium">
                   {h.issuer} {h.date ? `• ${h.date}` : ''}
                 </p>
                 {h.prize && (
-                  <p className="mt-1 text-green-700 font-medium text-sm">Prize: {h.prize}</p>
+                  <p className="mt-2 text-green-300 font-bold text-base bg-green-500/20 px-3 py-1 rounded-lg inline-block">🏆 {h.prize}</p>
                 )}
                 <div className="mt-4 flex items-center gap-3">
                   {h.certificate && (
                     <button
                       type="button"
-                      className="btn-outline"
+                      className="btn-success"
                       onClick={() => handleViewPDF(h.certificate!)}
                     >
-                      View Certificate
+                      📄 View Certificate
                     </button>
                   )}
                 </div>
@@ -128,27 +128,27 @@ export default function Achievements() {
           ) : (
             papers.map((p) => (
               <article key={p.title} className="card p-6">
-                <h3 className="text-lg font-semibold text-slate-900">{p.title}</h3>
-                <p className="mt-1 text-slate-700 text-sm">
+                <h3 className="text-xl font-bold text-white drop-shadow-md">{p.title}</h3>
+                <p className="mt-2 text-slate-100 text-base font-medium">
                   {p.issuer} {p.date ? `• ${p.date}` : ''}
                 </p>
                 <div className="mt-4 flex items-center gap-3">
                   {p.certificate && (
                     <button
                       type="button"
-                      className="btn-outline"
+                      className="btn-success"
                       onClick={() => handleViewPDF(p.certificate!)}
                     >
-                      View Certificate
+                      📄 View Certificate
                     </button>
                   )}
                   {p.ppt && (
                     <button
                       type="button"
-                      className="btn-outline"
+                      className="btn-success"
                       onClick={() => handleViewPPT(p.ppt!)}
                     >
-                      View Slides
+                      🎯 View Slides
                     </button>
                   )}
                 </div>
@@ -159,20 +159,20 @@ export default function Achievements() {
 
         {/* Certifications row */}
         <div className="mt-10">
-          <h3 className="text-xl font-semibold text-slate-900">Global Certification</h3>
+          <h3 className="text-xl font-bold text-white drop-shadow-md">Global Certification</h3>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 mt-4">
             {certifications.map((c) => (
               <article key={c.title} className="card p-6">
-                <h4 className="text-lg font-semibold text-slate-900">{c.title}</h4>
+                <h4 className="text-xl font-bold text-white drop-shadow-md">{c.title}</h4>
                 <div className="mt-3 flex gap-2">
                   {c.certificate && (
                     <a
                       href={encodeURI(c.certificate)}
                       target="_blank"
                       rel="noreferrer"
-                      className="btn-outline"
+                      className="btn-success"
                     >
-                      View Certificate
+                      📄 View Certificate
                     </a>
                   )}
                 </div>

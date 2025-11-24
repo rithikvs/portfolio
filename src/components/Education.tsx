@@ -35,25 +35,25 @@ export default function Education() {
       <div className="container-max">
         <h2 className="section-title"><span className="section-title-accent">Education</span></h2>
 
-        <ol className="relative border-s border-white/10 mt-6 space-y-8">
+        <ol className="relative border-s-4 border-cyan-500/40 mt-8 space-y-10">
           {education.map((e) => (
-            <li key={e.school + e.degree} className="ms-6 group">
-              <span className="absolute -start-2.5 mt-1 h-5 w-5 rounded-full bg-hero-gradient shadow-lg group-hover:scale-110 transition-transform"></span>
-              <div className="card p-5">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-semibold text-slate-900">{e.school}</h3>
-                  <span className="text-sm text-slate-600">{e.period}</span>
+            <li key={e.school + e.degree} className="ms-8 group">
+              <span className="absolute -start-3.5 mt-1 h-7 w-7 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg shadow-cyan-500/60 group-hover:scale-125 group-hover:shadow-xl group-hover:shadow-cyan-400/80 transition-all duration-300 border-4 border-slate-900"></span>
+              <div className="card p-6 bg-slate-800/80">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <h3 className="text-xl font-bold text-white drop-shadow-md">{e.school}</h3>
+                  <span className="text-sm font-bold text-cyan-300 bg-cyan-500/20 px-3 py-1 rounded-full">{e.period}</span>
                 </div>
-                <p className="text-slate-700">{e.degree}</p>
-                {e.details && <p className="text-slate-600 text-sm mt-1">{e.details}</p>}
+                <p className="text-white font-semibold mt-2 text-lg">{e.degree}</p>
+                {e.details && <p className="text-green-300 text-base mt-2 font-semibold">{e.details}</p>}
                 {e.marksheet && (
                   <a
                     href={encodeURI(e.marksheet)}  
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-3 inline-block btn-outline"
+                    className="mt-4 inline-block btn-success"
                   >
-                    View Marksheet
+                    📄 View Marksheet
                   </a>
                 )}
               </div>

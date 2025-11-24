@@ -16,22 +16,25 @@ html {
     @apply py-20 sm:py-24 bg-white min-h-screen flex flex-col justify-center;
   }
   .card {
-    @apply rounded-xl border border-slate-200 bg-white shadow-md hover:shadow-lg transition-shadow duration-200;
+    @apply rounded-xl border-2 border-slate-700/60 bg-slate-800/70 backdrop-blur-sm shadow-xl shadow-black/30 hover:shadow-2xl hover:shadow-cyan-500/30 hover:border-cyan-500/60 transition-all duration-300;
   }
   .badge {
-    @apply inline-flex items-center gap-2 rounded-full bg-slate-100 border border-slate-200 px-3 py-1 text-sm text-slate-700 font-medium;
+    @apply inline-flex items-center gap-2 rounded-full bg-slate-700/80 border-2 border-cyan-400/70 px-3 py-1.5 text-sm text-cyan-50 font-semibold;
   }
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-lg bg-primary-600 px-4 py-2 font-medium text-white shadow-sm hover:bg-primary-700 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-colors transition-transform duration-150;
+    @apply inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 px-5 py-2.5 font-semibold text-white shadow-md shadow-cyan-500/30 hover:from-cyan-500 hover:to-blue-500 hover:shadow-lg hover:shadow-cyan-400/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200;
   }
   .btn-outline {
-    @apply inline-flex items-center gap-2 rounded-lg border border-slate-300 px-4 py-2 text-slate-700 hover:bg-slate-100 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-colors transition-transform duration-150;
+    @apply inline-flex items-center gap-2 rounded-lg border-2 border-cyan-600/60 px-5 py-2.5 font-semibold text-cyan-200 hover:bg-cyan-600 hover:border-cyan-500 hover:text-white hover:shadow-md hover:shadow-cyan-500/30 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200;
   }
   .btn-light {
-    @apply inline-flex items-center gap-2 rounded-lg bg-slate-100 px-4 py-2 text-slate-900 font-medium hover:bg-slate-200 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-colors transition-transform duration-150;
+    @apply inline-flex items-center gap-2 rounded-lg bg-slate-800/80 border-2 border-cyan-600/50 px-5 py-2.5 text-slate-200 font-semibold hover:bg-cyan-700 hover:border-cyan-600 hover:text-white hover:shadow-md hover:shadow-cyan-500/30 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200;
+  }
+  .btn-success {
+    @apply inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-green-700 to-emerald-700 px-5 py-2.5 font-semibold text-white shadow-md shadow-green-600/25 hover:from-green-600 hover:to-emerald-600 hover:shadow-lg hover:shadow-green-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200;
   }
   .section-title {
-    @apply text-4xl font-bold text-slate-100 text-center mb-6 tracking-tight;
+    @apply text-4xl font-extrabold text-white text-center mb-6 tracking-tight drop-shadow-lg;
   }
   .section-title-accent {
     @apply relative inline-block;
@@ -43,24 +46,25 @@ html {
     transform: translateX(-50%);
     bottom: -8px;
     width: 96px;
-    height: 2px;
+    height: 4px;
     border-radius: 9999px;
-    background-color: rgba(59, 130, 246, 0.9);
+    background: linear-gradient(90deg, #22d3ee, #06b6d4, #22d3ee);
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.8), 0 0 40px rgba(6, 182, 212, 0.4);
   }
   .subtext {
-    @apply text-lg text-slate-300 mb-12 max-w-2xl mx-auto text-center;
+    @apply text-lg text-slate-200 mb-12 max-w-2xl mx-auto text-center font-medium;
   }
 }
 
 body {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0b1f4a 0%, #0a1636 100%);
+  background: linear-gradient(135deg, #0a1929 0%, #071a2b 50%, #020617 100%);
   color: #e2e8f0;
   font-family: 'Inter', ui-sans-serif, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, 'Noto Sans', sans-serif;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: rgba(148, 163, 184, 0.15); }
-::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #3b82f6, #1d4ed8); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: linear-gradient(135deg, #2563eb, #1e40af); }
+::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.5); }
+::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #06b6d4, #0ea5e9); border-radius: 4px; box-shadow: 0 0 10px rgba(6, 182, 212, 0.5); }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(135deg, #0ea5e9, #06b6d4); }

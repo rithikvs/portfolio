@@ -57,8 +57,8 @@ export default function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
 
-              <h3 className="text-xl font-semibold">{p.title}</h3>
-              <p className="mt-2 text-slate-700 flex-1">{p.description}</p>
+              <h3 className="text-xl font-bold text-white drop-shadow-md">{p.title}</h3>
+              <p className="mt-2 text-slate-200 flex-1 leading-relaxed">{p.description}</p>
 
               <div className="mt-3 flex flex-wrap justify-center gap-2">
                 {p.tech.map((t) => (
@@ -68,14 +68,14 @@ export default function Projects() {
                 ))}
               </div>
 
-              {/* 🔹 Consistent primary button */}
+              {/* 🔹 Consistent green button */}
               <a
                 href={p.github}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-4 btn-primary"
+                className="mt-4 btn-success"
               >
-                GitHub
+                💻 GitHub
               </a>
             </article>
           ))}

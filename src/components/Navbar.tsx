@@ -17,8 +17,21 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 10)
+      
+      // Find which section is currently in view
+      const navHeight = 80
+      const offset = window.scrollY + navHeight + 100
+      
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i].id)
+        if (section && section.offsetTop <= offset) {
+          setActiveSection(sections[i].id)
+          break
+        }
+      }
     }
     window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll() // Call once on mount
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -36,15 +49,15 @@ export default function Navbar() {
     <header 
       className={`fixed top-0 z-50 w-full backdrop-blur-md transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/90 border-b border-slate-200 shadow-sm' 
-          : 'bg-white/80 border-b border-slate-200'
+          ? 'bg-slate-900/95 border-b border-cyan-500/30 shadow-lg shadow-cyan-500/20' 
+          : 'bg-slate-900/90 border-b border-cyan-500/20'
       }`}
     >
       <nav className="container-max flex items-center justify-between py-3">
         <a 
           href="#hero" 
           onClick={(e) => { e.preventDefault(); handleClick('hero') }} 
-          className="font-bold text-2xl tracking-tight text-slate-900 hover:text-primary-700 transition-colors"
+          className="font-bold text-2xl tracking-tight text-cyan-400 hover:text-cyan-300 transition-colors"
         >
           Portfolio
         </a>
@@ -56,8 +69,8 @@ export default function Navbar() {
                 href={`#${s.id}`}
                 onClick={(e) => { e.preventDefault(); handleClick(s.id) }}
                 className={`relative px-4 py-2 rounded-full font-medium transition-all duration-150 ${
-                  activeSection === s.id ? 'text-slate-900' : 'text-slate-600 hover:text-slate-900'
-                } hover:bg-slate-100 hover:shadow-sm hover:-translate-y-0.5`}
+                  activeSection === s.id ? 'text-white bg-cyan-700/60 shadow-md' : 'text-slate-300 hover:text-cyan-300'
+                } hover:bg-cyan-700/30 hover:shadow-sm hover:-translate-y-0.5`}
               >
                 {s.label}
               </a>
@@ -65,7 +78,7 @@ export default function Navbar() {
           ))}
         </ul>
         
-        <div className="md:hidden text-slate-700 text-2xl cursor-pointer hover:text-slate-900 transition-colors p-2 rounded-lg hover:bg-slate-100">
+        <div className="md:hidden text-cyan-400 text-2xl cursor-pointer hover:text-cyan-300 transition-colors p-2 rounded-lg hover:bg-cyan-500/10">
           ☰
         </div>
       </nav>

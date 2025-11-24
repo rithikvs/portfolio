@@ -11,7 +11,7 @@ const SectionTitle = ({ title, subtitle }: { title: string; subtitle?: string })
 const Badge = ({ label }: { label: string }) => (
   <motion.span
     whileHover={{ scale: 1.1 }}
-    className="px-4 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md hover:shadow-lg transition-all duration-300"
+    className="px-4 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md shadow-cyan-500/40 hover:shadow-lg hover:shadow-cyan-400/60 transition-all duration-300"
   >
     {label}
   </motion.span>
@@ -44,7 +44,7 @@ export default function Skills() {
           {/* Programming */}
           <div className="card flex flex-col bg-white/5 border border-white/10 rounded-2xl shadow-xl p-8">
             <div className="flex items-center mb-4">
-              <Code className="w-8 h-8 text-indigo-400 mr-3" />
+              <Code className="w-8 h-8 text-cyan-400 mr-3" />
               <SectionTitle title="Programming" subtitle="Core coding skills I rely on" />
             </div>
             <div className="flex flex-wrap gap-3">
@@ -55,7 +55,7 @@ export default function Skills() {
           {/* Libraries */}
           <div className="card flex flex-col bg-white/5 border border-white/10 rounded-2xl shadow-xl p-8">
             <div className="flex items-center mb-4">
-              <Library className="w-8 h-8 text-purple-400 mr-3" />
+              <Library className="w-8 h-8 text-blue-400 mr-3" />
               <SectionTitle title="Libraries" subtitle="Frontend tools I use" />
             </div>
             <div className="flex flex-wrap gap-3">
@@ -66,7 +66,7 @@ export default function Skills() {
           {/* Frameworks */}
           <div className="card flex flex-col bg-white/5 border border-white/10 rounded-2xl shadow-xl p-8">
             <div className="flex items-center mb-4">
-              <Layers className="w-8 h-8 text-green-400 mr-3" />
+              <Layers className="w-8 h-8 text-cyan-300 mr-3" />
               <SectionTitle title="Frameworks" subtitle="Building scalable backends" />
             </div>
             <div className="flex flex-wrap gap-3">
@@ -77,7 +77,7 @@ export default function Skills() {
           {/* Databases */}
           <div className="card flex flex-col bg-white/5 border border-white/10 rounded-2xl shadow-xl p-8">
             <div className="flex items-center mb-4">
-              <Database className="w-8 h-8 text-yellow-400 mr-3" />
+              <Database className="w-8 h-8 text-blue-300 mr-3" />
               <SectionTitle title="Databases" subtitle="Storage and data management" />
             </div>
             <div className="flex flex-wrap gap-3">
@@ -88,7 +88,7 @@ export default function Skills() {
           {/* Soft Skills */}
           <div className="card flex flex-col bg-white/5 border border-white/10 rounded-2xl shadow-xl p-8">
             <div className="flex items-center mb-4">
-              <span className="w-8 h-8 flex items-center justify-center mr-3 text-pink-400 text-2xl">🤝</span>
+              <span className="w-8 h-8 flex items-center justify-center mr-3 text-cyan-300 text-2xl">🤝</span>
               <SectionTitle title="Soft Skills" subtitle="Professional & personal strengths" />
             </div>
             <div className="flex flex-wrap gap-3">
