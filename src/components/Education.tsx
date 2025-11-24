@@ -41,7 +41,7 @@ export default function Education() {
               <span className="absolute -start-2.5 mt-1 h-5 w-5 rounded-full bg-hero-gradient shadow-lg group-hover:scale-110 transition-transform"></span>
               <div className="card p-5">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-semibold">{e.school}</h3>
+                  <h3 className="text-xl font-semibold text-slate-900">{e.school}</h3>
                   <span className="text-sm text-slate-600">{e.period}</span>
                 </div>
                 <p className="text-slate-700">{e.degree}</p>

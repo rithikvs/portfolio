@@ -87,13 +87,13 @@ export default function Achievements() {
         {/* Horizontal toggle buttons */}
         <div className="mt-6 flex items-center justify-center gap-3">
           <button
-            className={`btn-outline ${tab === 'hackathon' ? 'ring-2 ring-primary-500 text-primary-700' : ''}`}
+            className={`btn-light ${tab === 'hackathon' ? 'ring-2 ring-primary-500' : ''}`}
             onClick={() => setTab('hackathon')}
           >
             Hackathons
           </button>
           <button
-            className={`btn-outline ${tab === 'papers' ? 'ring-2 ring-primary-500 text-primary-700' : ''}`}
+            className={`btn-light ${tab === 'papers' ? 'ring-2 ring-primary-500' : ''}`}
             onClick={() => setTab('papers')}
           >
             Paper Presentations

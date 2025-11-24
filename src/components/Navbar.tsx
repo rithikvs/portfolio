@@ -60,9 +60,6 @@ export default function Navbar() {
                 } hover:bg-slate-100 hover:shadow-sm hover:-translate-y-0.5`}
               >
                 {s.label}
-                {activeSection === s.id && (
-                  <span className="absolute inset-x-4 -bottom-0.5 h-0.5 bg-primary-600 rounded-full"></span>
-                )}
               </a>
             </li>
           ))}
