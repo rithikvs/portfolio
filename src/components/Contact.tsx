@@ -5,10 +5,10 @@ import { IoMdCall } from 'react-icons/io'
 export default function Contact() {
 
   return (
-    <section id="contact" className="section py-16">
-      <div className="container mx-auto max-w-5xl px-6">
+    <section id="contact" className="section bg-transparent">
+      <div className="container-max">
         <div className="text-center">
-          <h2 className="text-4xl font-bold text-white">Contact Me</h2>
+          <h2 className="section-title"><span className="section-title-accent">Contact Me</span></h2>
           <p className="mt-4 text-slate-300 text-lg mx-auto max-w-2xl">
             Feel free to reach out for collaborations, job opportunities, or just a friendly hello 👋
             Connect with me through any of these platforms:
@@ -28,7 +28,7 @@ export default function Contact() {
               <div className="flex flex-col items-center w-full">
                 <a
                   href="mailto:rithikvs08@gmail.com?subject=Portfolio%20Contact&body=Hello%20Rithik,%0A%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20connect.%0A%0ABest%20regards,%0A"
-                  className="w-full px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-300 text-center font-medium"
+                  className="w-full btn-primary justify-center"
                 >
                   rithikvs08@gmail.com
                 </a>
@@ -36,7 +36,7 @@ export default function Contact() {
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=rithikvs08@gmail.com&su=Portfolio Contact&body=Hello Rithik,%0A%0AI saw your portfolio and would like to connect.%0A%0ABest regards,%0A"
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-3 w-full px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-300 flex items-center justify-center gap-2 font-medium"
+                  className="mt-3 w-full btn-outline flex items-center justify-center gap-2"
                 >
                   <MdEmail size={20} /> Open in Gmail
                 </a>
@@ -54,7 +54,7 @@ export default function Contact() {
               <p className="text-slate-300 mb-4">Call me during business hours</p>
               <a
                 href="tel:+917708552461"
-                className="w-full px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-300 text-center font-medium"
+                className="w-full btn-primary text-center"
               >
                 +91 7708552461
               </a>

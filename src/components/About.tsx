@@ -5,13 +5,13 @@ export default function About() {
   return (
     <section
       id="about"
-      className="section text-white"
+      className="section bg-transparent"
     >
       <div className="container-max text-center">
         
         {/* Heading */}
-        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-8">
-          About <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-pink-400 animate-gradient">Me</span>
+        <h2 className="section-title mb-8">
+          <span className="section-title-accent">About</span> <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-pink-400 animate-gradient">Me</span>
         </h2>
 
         {/* Main Paragraph */}

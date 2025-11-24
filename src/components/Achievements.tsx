@@ -1,5 +1,4 @@
-import { FaTrophy } from "react-icons/fa"
-import { useState, useCallback } from "react"
+import { useState, useCallback } from 'react'
 
 type Item = { 
   title: string
@@ -25,6 +24,13 @@ const hackathons: Item[] = [
     prize: "Finalist"
   },
   {
+    title: "CHEMOVATE 2K25",
+    issuer: "COIMBATORE INSTITUTE OF TECHNOLOGY",
+    date: "September 29th,30th 2025",
+    certificate: "cit hackathon.pdf",
+    prize: "TOP 10"
+  },
+  {
     title: "2nd AI/ML CHALLENGE",
     issuer: "IIT MADRAS",
     date: "2023",
@@ -42,46 +48,122 @@ const papers: Item[] = [
     ppt: 'yoyo.pdf',
     link: '' 
   },
+  
   {
     title: 'A real-time Indian language communication assistant for the Deaf and hard of hearing.',
-    issuer: 'Kongu Engineering College – SIGININ 2025',
-    date: '2024',
-    certificate: 'sigin24.pdf',
+    issuer: 'Kongu Engineering College – THROB 2025',
+    date: '2025',
+    certificate: 'throb paper.pdf',
     ppt: 'sigin.pdf'
   },
 ]
 
 export default function Achievements() {
-  const [showHackathon, setShowHackathon] = useState(false)
-  const [showPaper, setShowPaper] = useState(false)
+  const [tab, setTab] = useState<'hackathon' | 'papers'>('hackathon')
 
-  // Helper to open ppt/pptx in Google Docs Viewer
   const handleViewPPT = useCallback((ppt: string) => {
-    let isPPTX = ppt.endsWith('.ppt') || ppt.endsWith('.pptx');
-    let url = ppt;
-    if (isPPTX) {
-      const origin = window.location.origin;
-      url = `https://docs.google.com/gview?url=${origin}${ppt.startsWith('/') ? ppt : '/' + ppt}&embedded=true`;
+    const isPPT = ppt.endsWith('.ppt') || ppt.endsWith('.pptx')
+    let url = ppt
+    if (isPPT) {
+      const origin = window.location.origin
+      url = `https://docs.google.com/gview?url=${origin}${ppt.startsWith('/') ? ppt : '/' + ppt}&embedded=true`
     }
-    window.open(url, '_blank', 'noopener,noreferrer');
-  }, []);
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }, [])
 
   const handleViewPDF = useCallback((pdf: string) => {
     window.open(pdf, '_blank', 'noopener,noreferrer')
   }, [])
 
   return (
-    <section id="achievements" className="section">
+    <section id="achievements" className="section bg-transparent">
       <div className="container-max">
-        <h2 className="text-3xl font-semibold">Achievements & Certifications</h2>
+        <h2 className="section-title">
+          Achievements
+          <span className="section-title-accent"></span>
+        </h2>
+        <p className="subtext">Highlights from hackathons and paper presentations.</p>
 
-        {/* Certifications */}
-        <div className="mt-6">
-          <h3 className="text-xl font-semibold">Global Certification</h3>
+        {/* Horizontal toggle buttons */}
+        <div className="mt-6 flex items-center justify-center gap-3">
+          <button
+            className={`btn-outline ${tab === 'hackathon' ? 'ring-2 ring-primary-500 text-primary-700' : ''}`}
+            onClick={() => setTab('hackathon')}
+          >
+            Hackathons
+          </button>
+          <button
+            className={`btn-outline ${tab === 'papers' ? 'ring-2 ring-primary-500 text-primary-700' : ''}`}
+            onClick={() => setTab('papers')}
+          >
+            Paper Presentations
+          </button>
+        </div>
+
+        {/* Content grid aligned */}
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {tab === 'hackathon' ? (
+            hackathons.map((h) => (
+              <article key={h.title} className="card p-6">
+                <h3 className="text-lg font-semibold text-slate-900">{h.title}</h3>
+                <p className="mt-1 text-slate-700 text-sm">
+                  {h.issuer} {h.date ? `• ${h.date}` : ''}
+                </p>
+                {h.prize && (
+                  <p className="mt-1 text-green-700 font-medium text-sm">Prize: {h.prize}</p>
+                )}
+                <div className="mt-4 flex items-center gap-3">
+                  {h.certificate && (
+                    <button
+                      type="button"
+                      className="btn-outline"
+                      onClick={() => handleViewPDF(h.certificate!)}
+                    >
+                      View Certificate
+                    </button>
+                  )}
+                </div>
+              </article>
+            ))
+          ) : (
+            papers.map((p) => (
+              <article key={p.title} className="card p-6">
+                <h3 className="text-lg font-semibold text-slate-900">{p.title}</h3>
+                <p className="mt-1 text-slate-700 text-sm">
+                  {p.issuer} {p.date ? `• ${p.date}` : ''}
+                </p>
+                <div className="mt-4 flex items-center gap-3">
+                  {p.certificate && (
+                    <button
+                      type="button"
+                      className="btn-outline"
+                      onClick={() => handleViewPDF(p.certificate!)}
+                    >
+                      View Certificate
+                    </button>
+                  )}
+                  {p.ppt && (
+                    <button
+                      type="button"
+                      className="btn-outline"
+                      onClick={() => handleViewPPT(p.ppt!)}
+                    >
+                      View Slides
+                    </button>
+                  )}
+                </div>
+              </article>
+            ))
+          )}
+        </div>
+
+        {/* Certifications row */}
+        <div className="mt-10">
+          <h3 className="text-xl font-semibold text-slate-900">Global Certification</h3>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 mt-4">
             {certifications.map((c) => (
               <article key={c.title} className="card p-6">
-                <h4 className="text-lg font-semibold">{c.title}</h4>
+                <h4 className="text-lg font-semibold text-slate-900">{c.title}</h4>
                 <div className="mt-3 flex gap-2">
                   {c.certificate && (
                     <a
@@ -96,80 +178,6 @@ export default function Achievements() {
                 </div>
               </article>
             ))}
-          </div>
-        </div>
-
-        {/* Hackathon Dropdown */}
-        <div className="mt-10">
-          <button
-            className="btn-primary px-6 py-2 rounded-full font-semibold shadow hover:scale-105 transition"
-            onClick={() => setShowHackathon((v) => !v)}
-          >
-            {showHackathon ? "Hide Hackathon Achievements" : "Show Hackathon Achievements"}
-          </button>
-          
-          {/* Fixed height container to prevent layout shift */}
-          <div className={`transition-all duration-500 overflow-hidden ${showHackathon ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-            <div className="mt-6 space-y-4">
-              {hackathons.map((h) => (
-                <div key={h.title} className="card p-4">
-                  <h4 className="text-lg font-semibold">{h.title}</h4>
-                  <p className="text-slate-400 text-sm">{h.issuer} {h.date && `• ${h.date}`}</p>
-                  {h.prize && <p className="text-green-400 font-semibold mt-1 text-sm">Prize: {h.prize}</p>}
-                  {h.certificate && (
-                    <button
-                      type="button"
-                      className="mt-2 btn-outline text-sm px-3 py-1"
-                      onClick={() => handleViewPDF(h.certificate!)}
-                    >
-                      View Certificate
-                    </button>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Paper Presentation Dropdown */}
-        <div className="mt-10">
-          <button
-            className="btn-primary px-6 py-2 rounded-full font-semibold shadow hover:scale-105 transition"
-            onClick={() => setShowPaper((v) => !v)}
-          >
-            {showPaper ? "Hide Paper Presentations" : "Show Paper Presentations"}
-          </button>
-          
-          {/* Fixed height container to prevent layout shift */}
-          <div className={`transition-all duration-500 overflow-hidden ${showPaper ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-            <div className="mt-6 space-y-4">
-              {papers.map((p) => (
-                <div key={p.title} className="card p-4">
-                  <h4 className="text-lg font-semibold">{p.title}</h4>
-                  <p className="text-slate-400 text-sm">{p.issuer} {p.date && `• ${p.date}`}</p>
-                  <div className="flex gap-2 mt-2">
-                    {p.certificate && (
-                      <button
-                        type="button"
-                        className="btn-outline text-sm px-3 py-1"
-                        onClick={() => handleViewPDF(p.certificate!)}
-                      >
-                        View Certificate
-                      </button>
-                    )}
-                    {p.ppt && (
-                      <button
-                        type="button"
-                        className="btn-outline text-sm px-3 py-1"
-                        onClick={() => handleViewPPT(p.ppt!)}
-                      >
-                        View PPT
-                      </button>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>

@@ -7,75 +7,57 @@ html {
   scroll-padding-top: 80px; /* Account for fixed navbar */
 }
 
-/* Animations */
-@keyframes wave {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-10deg); }
-  75% { transform: rotate(10deg); }
-}
-
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animate-wave {
-  animation: wave 1.5s infinite;
-}
-
-.animate-gradient {
-  background-size: 200% auto;
-  animation: gradient 4s linear infinite;
-}
-
 /* Reusable utility */
 @layer components {
   .container-max {
     @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
   }
   .section {
-    @apply py-20 sm:py-24 bg-gradient-to-br from-blue-950/40 via-blue-900/50 to-slate-950/60 min-h-screen flex flex-col justify-center;
+    @apply py-20 sm:py-24 bg-white min-h-screen flex flex-col justify-center;
   }
   .card {
-    @apply rounded-xl border border-blue-300/40 bg-gradient-to-br from-blue-950/20 to-blue-900/10 backdrop-blur-lg shadow-xl hover:shadow-blue-500/40 transition-all duration-300;
+    @apply rounded-xl border border-slate-200 bg-white shadow-md hover:shadow-lg transition-shadow duration-200;
   }
   .badge {
-    @apply inline-flex items-center gap-2 rounded-full bg-blue-500/30 border border-blue-300/50 px-3 py-1 text-sm text-blue-100 font-medium;
+    @apply inline-flex items-center gap-2 rounded-full bg-slate-100 border border-slate-200 px-3 py-1 text-sm text-slate-700 font-medium;
   }
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-blue-500 to-blue-700 px-4 py-2 font-medium text-white shadow-lg hover:from-blue-600 hover:to-blue-800 hover:shadow-blue-500/60 transition-all duration-300;
+    @apply inline-flex items-center gap-2 rounded-lg bg-primary-600 px-4 py-2 font-medium text-white shadow-sm hover:bg-primary-700 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-colors transition-transform duration-150;
   }
   .btn-outline {
-    @apply inline-flex items-center gap-2 rounded-lg border border-blue-300/60 px-4 py-2 text-blue-100 hover:bg-blue-500/30 hover:border-blue-200 transition-all duration-300;
+    @apply inline-flex items-center gap-2 rounded-lg border border-slate-300 px-4 py-2 text-slate-700 hover:bg-slate-100 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-colors transition-transform duration-150;
+  }
+  .section-title {
+    @apply text-4xl font-bold text-slate-100 text-center mb-6 tracking-tight;
+  }
+  .section-title-accent {
+    @apply relative inline-block;
+  }
+  .section-title-accent::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -8px;
+    width: 96px;
+    height: 2px;
+    border-radius: 9999px;
+    background-color: rgba(59, 130, 246, 0.9);
+  }
+  .subtext {
+    @apply text-lg text-slate-300 mb-12 max-w-2xl mx-auto text-center;
   }
 }
 
 body {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
-  color: #f1f5f9;
-}
-
-/* Smooth scrolling for all browsers */
-* {
-  scroll-behavior: smooth;
+  background: linear-gradient(135deg, #0b1f4a 0%, #0a1636 100%);
+  color: #e2e8f0;
+  font-family: 'Inter', ui-sans-serif, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, 'Noto Sans', sans-serif;
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(30, 58, 138, 0.1);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #2563eb, #1e40af);
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: rgba(148, 163, 184, 0.15); }
+::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #3b82f6, #1d4ed8); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(135deg, #2563eb, #1e40af); }

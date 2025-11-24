@@ -2,7 +2,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="section min-h-screen flex items-center relative overflow-hidden"
+      className="section bg-transparent min-h-screen flex items-center relative overflow-hidden"
     >
       <div className="container-max grid items-center gap-16 md:grid-cols-2">
         
@@ -28,14 +28,14 @@ export default function Hero() {
           <div className="flex flex-wrap justify-center md:justify-start gap-4">
             <a
               href="#contact"
-              className="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-xl font-medium hover:shadow-lg hover:shadow-blue-500/50 transform hover:-translate-y-1 transition-all duration-300"
+              className="btn-primary px-6 py-3 hover:shadow-blue-500/40 hover:-translate-y-0.5"
             >
               🚀 Contact Me
             </a>
             <a
               href="RITHIK V S resume.pdf"
               download
-              className="px-6 py-3 bg-blue-50/10 text-blue-100 rounded-xl font-medium border border-blue-300/50 hover:bg-blue-500/20 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
+              className="btn-outline px-6 py-3 hover:-translate-y-0.5"
             >
               📄 Download Resume
             </a>

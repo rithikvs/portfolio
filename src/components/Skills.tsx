@@ -32,10 +32,10 @@ export default function Skills() {
   ]
 
   return (
-    <section id="skills" className="section py-16">
+    <section id="skills" className="section bg-transparent">
       <div className="container-max">
-        <h2 className="text-4xl font-bold text-white mb-2 text-center">Skills</h2>
-        <p className="text-lg text-slate-300 mb-12 max-w-2xl mx-auto text-center">
+        <h2 className="section-title">Skills</h2>
+        <p className="subtext">
           A showcase of the technologies and soft skills I use to build modern, scalable, and efficient applications.
         </p>
 

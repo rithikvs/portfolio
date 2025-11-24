@@ -35,25 +35,30 @@ const projects: Project[] = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="section">
+    <section id="projects" className="section bg-transparent">
       <div className="container-max">
-        <h2 className="text-3xl font-semibold text-center">Projects</h2>
+        <h2 className="section-title">
+          <span className="section-title-accent">Projects</span>
+        </h2>
 
         <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p) => (
             <article
               key={p.title}
-              className="card p-6 flex flex-col items-center text-center"
+              className="card p-6 flex flex-col items-center text-center group"
             >
               {/* 🔹 Project image */}
-              <img
-                src={p.image}
-                alt={p.title}
-                className="w-full h-40 object-cover rounded-xl mb-4"
-              />
+              <div className="relative w-full h-40 mb-4 overflow-hidden rounded-xl">
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
 
               <h3 className="text-xl font-semibold">{p.title}</h3>
-              <p className="mt-2 text-slate-300 flex-1">{p.description}</p>
+              <p className="mt-2 text-slate-700 flex-1">{p.description}</p>
 
               <div className="mt-3 flex flex-wrap justify-center gap-2">
                 {p.tech.map((t) => (
@@ -63,12 +68,12 @@ export default function Projects() {
                 ))}
               </div>
 
-              {/* 🔹 Green GitHub button */}
+              {/* 🔹 Consistent primary button */}
               <a
                 href={p.github}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-4 px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 transition w-max shadow-md"
+                className="mt-4 btn-primary"
               >
                 GitHub
               </a>

@@ -31,21 +31,21 @@ const education: Edu[] = [
 
 export default function Education() {
   return (
-    <section id="education" className="section">
+    <section id="education" className="section bg-transparent">
       <div className="container-max">
-        <h2 className="text-3xl font-semibold">Education</h2>
+        <h2 className="section-title"><span className="section-title-accent">Education</span></h2>
 
         <ol className="relative border-s border-white/10 mt-6 space-y-8">
           {education.map((e) => (
-            <li key={e.school + e.degree} className="ms-6">
-              <span className="absolute -start-2.5 mt-1 h-5 w-5 rounded-full bg-hero-gradient"></span>
+            <li key={e.school + e.degree} className="ms-6 group">
+              <span className="absolute -start-2.5 mt-1 h-5 w-5 rounded-full bg-hero-gradient shadow-lg group-hover:scale-110 transition-transform"></span>
               <div className="card p-5">
                 <div className="flex items-center justify-between">
                   <h3 className="text-xl font-semibold">{e.school}</h3>
-                  <span className="text-sm text-slate-400">{e.period}</span>
+                  <span className="text-sm text-slate-600">{e.period}</span>
                 </div>
-                <p className="text-slate-300">{e.degree}</p>
-                {e.details && <p className="text-slate-400 text-sm mt-1">{e.details}</p>}
+                <p className="text-slate-700">{e.degree}</p>
+                {e.details && <p className="text-slate-600 text-sm mt-1">{e.details}</p>}
                 {e.marksheet && (
                   <a
                     href={encodeURI(e.marksheet)}  

@@ -24,6 +24,9 @@ export default {
         'hero-gradient': 'linear-gradient(135deg, #3b82f6, #1d4ed8, #1e40af)',
         'card-gradient': 'linear-gradient(135deg, rgba(59, 131, 246, 0.91), rgba(30, 64, 175, 0.05))',
       },
+      fontFamily: {
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'Noto Sans', 'sans-serif'],
+      },
     },
   },
   plugins: [],
