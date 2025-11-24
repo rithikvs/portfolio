@@ -13,6 +13,7 @@ const sections = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => {
@@ -41,6 +42,7 @@ export default function Navbar() {
       const navHeight = 80
       const offsetTop = el.offsetTop - navHeight
       setActiveSection(id)
+      setMobileMenuOpen(false)
       window.scrollTo({ top: offsetTop, behavior: 'smooth' })
     }
   }
@@ -78,10 +80,35 @@ export default function Navbar() {
           ))}
         </ul>
         
-        <div className="md:hidden text-cyan-400 text-2xl cursor-pointer hover:text-cyan-300 transition-colors p-2 rounded-lg hover:bg-cyan-500/10">
-          ☰
-        </div>
+        <button 
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="md:hidden text-cyan-400 text-2xl cursor-pointer hover:text-cyan-300 transition-colors p-2 rounded-lg hover:bg-cyan-500/10"
+          aria-label="Toggle menu"
+        >
+          {mobileMenuOpen ? '✕' : '☰'}
+        </button>
       </nav>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-slate-900/98 border-t border-cyan-500/30 backdrop-blur-lg">
+          <ul className="flex flex-col py-4">
+            {sections.map((s) => (
+              <li key={s.id}>
+                <a
+                  href={`#${s.id}`}
+                  onClick={(e) => { e.preventDefault(); handleClick(s.id) }}
+                  className={`block px-6 py-3 font-medium transition-all duration-150 ${
+                    activeSection === s.id ? 'text-white bg-cyan-700/60' : 'text-slate-300 hover:text-white hover:bg-cyan-700/30'
+                  }`}
+                >
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </header>
   )
 }
