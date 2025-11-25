@@ -23,6 +23,7 @@ const projects: Project[] = [
       'A web application designed for speech and hearing impaired individuals, supporting Indian regional languages with AI-powered sign recognition.',
     tech: ['React', 'Material-UI', 'TensorFlow.js', 'Node.js', 'Twilio API'],
     github: 'https://github.com/rithikvs/VoiceBridge',
+    demo: 'https://6925403e753f7969695fa42c--friendly-tartufo-77f55f.netlify.app/',
     image: 'voicebridge.jpg',
   },
   {
