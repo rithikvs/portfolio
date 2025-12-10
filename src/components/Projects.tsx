@@ -15,7 +15,16 @@ const projects: Project[] = [
     tech: ['React', 'Node.js', 'Express', 'MongoDB'],
     github: 'https://github.com/rithikvs/e-commerse-fullstack',
     demo: 'http://e-commerse-fullstack.vercel.app',
-    image: 'ecommerse.jpg', // 🔹 place image in public/images/
+    image: 'handmade.png', 
+  },
+   {
+    title: 'Study Hub',
+    description:
+      'A professional collaborative study platform for students, built with React frontend and Node.js backend with MongoDB.',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB'],
+    github: 'https://github.com/rithikvs/study',
+    demo: 'https://study-fwpj.vercel.app/',
+    image: 'studyhub.png',
   },
   {
     title: 'VoiceBridge',
