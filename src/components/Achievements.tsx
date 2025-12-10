@@ -12,8 +12,8 @@ type Item = {
 }
 
 const certifications: Item[] = [
-  { title: 'MongoDB', certificate: '/MongoDBAssociateDeveloper_Badge20250406-27-yeb5et.pdf' },
-  { title: 'Oracle', certificate: '/oracle certificate.pdf' },
+  { title: 'MongoDB', image: "mongodb.png",certificate: '/MongoDBAssociateDeveloper_Badge20250406-27-yeb5et.pdf' },
+  { title: 'Oracle', image: "oracle.png",certificate: '/oracle certificate.pdf' },
 ]
 
 const hackathons: Item[] = [
@@ -221,7 +221,18 @@ export default function Achievements() {
           <h3 className="text-xl font-bold text-white drop-shadow-md">Global Certification</h3>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 mt-4">
             {certifications.map((c) => (
-              <article key={c.title} className="card p-6">
+              <article key={c.title} className="card p-6 group">
+                {/* Image */}
+                {c.image && (
+                  <div className="relative w-full h-40 mb-4 overflow-hidden rounded-xl">
+                    <img
+                      src={c.image}
+                      alt={c.title}
+                      className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  </div>
+                )}
                 <h4 className="text-xl font-bold text-white drop-shadow-md">{c.title}</h4>
                 <div className="mt-3 flex gap-2">
                   {c.certificate && (
