@@ -42,7 +42,7 @@ const hackathons: Item[] = [
     image: "ibm image.jpg"
   },
   {
-    title: "2nd AI/ML CHALLENGE",
+    title: "2nd AI/ML CHALLENGE (online)",
     issuer: "IIT MADRAS",
     date: "2023",
     certificate: "iit madras.pdf",
@@ -73,13 +73,22 @@ const papers: Item[] = [
     image: 'throb image.jpg'
   },
    {
-    title: 'A real-time Indian language communication assistant for the Deaf and hard of hearing.',
+    title: 'Land connect',
     issuer: 'Kongu Engineering College – Sigin 2024',
     date: '1.10.2024',
     certificate: 'sigin25.pdf',
-    ppt: 'sigin.pdf',
+    ppt: 'land connect.pdf',
     prize: "2nd prize",
-    image: 'sigin image.jpg'
+    image: 'sigin image.png'
+  },
+   {
+    title: 'AI-Powered Chatbots: Enhancing Customer Experience',
+    issuer: 'KGISL college coimbatore',
+    date: '25th oct 2024',
+    certificate: 'kgisl.pdf',
+    ppt: 'kgisl ppt.pdf',
+    prize: "participated",
+    image: 'kgisl image.png'
   },
 ]
 
