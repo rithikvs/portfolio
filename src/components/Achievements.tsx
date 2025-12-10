@@ -8,6 +8,7 @@ type Item = {
   certificate?: string
   ppt?: string
   prize?: string
+  image?: string
 }
 
 const certifications: Item[] = [
@@ -21,21 +22,32 @@ const hackathons: Item[] = [
     issuer: "BYTS India and powered by Nunnari Labs",
     date: "April 11&12 2025",
     certificate: "bytes.pdf",
-    prize: "Finalist"
+    prize: "Finalist",
+    image: "bytes image.png"
   },
   {
-    title: "CHEMOVATE 2K25",
-    issuer: "COIMBATORE INSTITUTE OF TECHNOLOGY",
-    date: "September 29th,30th 2025",
-    certificate: "cit hackathon.pdf",
-    prize: "TOP 10"
+    title: "HACKATRONICS ",
+    issuer: "Mechatronics department Kongu Engineering College",
+     date: "September 26th,27th 2025",
+    certificate: "hactronics mts.pdf",
+    prize: "7th place",
+    image: "hackatronics image.jpg"
+  },
+  {
+    title: "ibm skills",
+    issuer: "nascom foundation",
+    date: "September 16th,17th 2025",
+    certificate: "ibm certificate.pdf",
+    prize: "TOP 20",
+    image: "ibm image.jpg"
   },
   {
     title: "2nd AI/ML CHALLENGE",
     issuer: "IIT MADRAS",
     date: "2023",
     certificate: "iit madras.pdf",
-    prize: "participated"
+    prize: "participated",
+    image: "iit madras.png"
   }
 ]
 
@@ -46,7 +58,9 @@ const papers: Item[] = [
     date: '6th NOVEMBER2024',
     certificate: 'bannari.pdf',
     ppt: 'yoyo.pdf',
-    link: '' 
+    link: '',
+    prize: "1st prize",
+    image: 'bannari image.png'
   },
   
   {
@@ -54,7 +68,18 @@ const papers: Item[] = [
     issuer: 'Kongu Engineering College – THROB 2025',
     date: '2025',
     certificate: 'throb paper.pdf',
-    ppt: 'sigin.pdf'
+    ppt: 'sigin.pdf',
+    prize: "1st prize",
+    image: 'throb image.jpg'
+  },
+   {
+    title: 'A real-time Indian language communication assistant for the Deaf and hard of hearing.',
+    issuer: 'Kongu Engineering College – Sigin 2024',
+    date: '1.10.2024',
+    certificate: 'sigin25.pdf',
+    ppt: 'sigin.pdf',
+    prize: "2nd prize",
+    image: 'sigin image.jpg'
   },
 ]
 
@@ -104,7 +129,18 @@ export default function Achievements() {
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
           {tab === 'hackathon' ? (
             hackathons.map((h) => (
-              <article key={h.title} className="card p-6">
+              <article key={h.title} className="card p-6 group">
+                {/* Image */}
+                {h.image && (
+                  <div className="relative w-full h-40 mb-4 overflow-hidden rounded-xl">
+                    <img
+                      src={h.image}
+                      alt={h.title}
+                      className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  </div>
+                )}
                 <h3 className="text-xl font-bold text-white drop-shadow-md">{h.title}</h3>
                 <p className="mt-2 text-slate-100 text-base font-medium">
                   {h.issuer} {h.date ? `• ${h.date}` : ''}
@@ -127,11 +163,25 @@ export default function Achievements() {
             ))
           ) : (
             papers.map((p) => (
-              <article key={p.title} className="card p-6">
+              <article key={p.title} className="card p-6 group">
+                {/* Image */}
+                {p.image && (
+                  <div className="relative w-full h-40 mb-4 overflow-hidden rounded-xl">
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  </div>
+                )}
                 <h3 className="text-xl font-bold text-white drop-shadow-md">{p.title}</h3>
                 <p className="mt-2 text-slate-100 text-base font-medium">
                   {p.issuer} {p.date ? `• ${p.date}` : ''}
                 </p>
+                {p.prize && (
+                  <p className="mt-2 text-green-300 font-bold text-base bg-green-500/20 px-3 py-1 rounded-lg inline-block">🏆 {p.prize}</p>
+                )}
                 <div className="mt-4 flex items-center gap-3">
                   {p.certificate && (
                     <button
