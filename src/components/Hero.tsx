@@ -73,7 +73,7 @@ export default function Hero() {
           ></div>
           <div className="relative z-10 h-48 w-48 sm:h-64 sm:w-64 md:h-80 md:w-80 lg:h-96 lg:w-96 rounded-full overflow-hidden border-4 border-cyan-400/40 shadow-2xl shadow-cyan-500/60 group-hover:border-cyan-300/70 transition-all duration-500">
             <img
-              src="rithik.jpg"
+              src="rithik1.jpg"
               alt="Profile"
               className="w-full h-full object-cover object-center scale-110 transition-transform duration-500 group-hover:scale-125"
             />
