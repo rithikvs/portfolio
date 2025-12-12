@@ -27,6 +27,15 @@ const projects: Project[] = [
     image: 'studyhub.png',
   },
   {
+    title: 'Attendence management',
+    description:
+      'A responsive attendance management solution powered by React frontend, Node.js backend, and MongoDB database.',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB'],
+    github: 'https://github.com/rithikvs/student_attendence',
+    demo: 'http://student-attendence-three.vercel.app',
+    image: 'attendence.png',
+  },
+  {
     title: 'VoiceBridge',
     description:
       'A web application designed for speech and hearing impaired individuals, supporting Indian regional languages with AI-powered sign recognition.',
