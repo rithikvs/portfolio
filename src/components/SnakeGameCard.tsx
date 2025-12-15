@@ -16,6 +16,7 @@ export default function SnakeGameCard() {
   const directionRef = useRef<Direction>('RIGHT')
   const foodRef = useRef<Position>({ x: 10, y: 10 })
   const gameLoopRef = useRef<number>()
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null)
 
   const GRID_SIZE = 15
   const CELL_SIZE = 16
@@ -35,6 +36,23 @@ export default function SnakeGameCard() {
 
   const toggleGameMenu = () => {
     setShowGameMenu(!showGameMenu)
+  }
+
+  const changeDirection = (newDirection: Direction) => {
+    if (!gameStarted) return
+    
+    const currentDirection = directionRef.current
+    
+    // Prevent reversing direction
+    if (newDirection === 'UP' && currentDirection !== 'DOWN') {
+      directionRef.current = 'UP'
+    } else if (newDirection === 'DOWN' && currentDirection !== 'UP') {
+      directionRef.current = 'DOWN'
+    } else if (newDirection === 'LEFT' && currentDirection !== 'RIGHT') {
+      directionRef.current = 'LEFT'
+    } else if (newDirection === 'RIGHT' && currentDirection !== 'LEFT') {
+      directionRef.current = 'RIGHT'
+    }
   }
 
   const generateFood = useCallback((): Position => {
@@ -243,22 +261,64 @@ export default function SnakeGameCard() {
       if (!gameStarted) return
 
       const key = e.key
-      const currentDirection = directionRef.current
-
-      if (key === 'ArrowUp' && currentDirection !== 'DOWN') {
-        directionRef.current = 'UP'
-      } else if (key === 'ArrowDown' && currentDirection !== 'UP') {
-        directionRef.current = 'DOWN'
-      } else if (key === 'ArrowLeft' && currentDirection !== 'RIGHT') {
-        directionRef.current = 'LEFT'
-      } else if (key === 'ArrowRight' && currentDirection !== 'LEFT') {
-        directionRef.current = 'RIGHT'
+      
+      if (key === 'ArrowUp') {
+        changeDirection('UP')
+      } else if (key === 'ArrowDown') {
+        changeDirection('DOWN')
+      } else if (key === 'ArrowLeft') {
+        changeDirection('LEFT')
+      } else if (key === 'ArrowRight') {
+        changeDirection('RIGHT')
       }
       e.preventDefault()
     }
 
     window.addEventListener('keydown', handleKeyPress)
     return () => window.removeEventListener('keydown', handleKeyPress)
+  }, [gameStarted])
+
+  // Touch controls for mobile
+  useEffect(() => {
+    const handleTouchStart = (e: TouchEvent) => {
+      const touch = e.touches[0]
+      touchStartRef.current = { x: touch.clientX, y: touch.clientY }
+    }
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (!touchStartRef.current || !gameStarted) return
+
+      const touch = e.changedTouches[0]
+      const deltaX = touch.clientX - touchStartRef.current.x
+      const deltaY = touch.clientY - touchStartRef.current.y
+
+      // Determine swipe direction (minimum 30px swipe)
+      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 30) {
+        // Horizontal swipe
+        if (deltaX > 0) {
+          changeDirection('RIGHT')
+        } else {
+          changeDirection('LEFT')
+        }
+      } else if (Math.abs(deltaY) > 30) {
+        // Vertical swipe
+        if (deltaY > 0) {
+          changeDirection('DOWN')
+        } else {
+          changeDirection('UP')
+        }
+      }
+
+      touchStartRef.current = null
+    }
+
+    window.addEventListener('touchstart', handleTouchStart)
+    window.addEventListener('touchend', handleTouchEnd)
+    
+    return () => {
+      window.removeEventListener('touchstart', handleTouchStart)
+      window.removeEventListener('touchend', handleTouchEnd)
+    }
   }, [gameStarted])
 
   return (
@@ -387,11 +447,13 @@ export default function SnakeGameCard() {
                 {/* Start Screen */}
                 {!gameStarted && !gameOver && (
                   <div className="absolute inset-0 bg-black/80 flex items-center justify-center">
-                    <div className="text-center space-y-4">
+                    <div className="text-center space-y-4 px-4">
                       <div className="text-6xl animate-bounce">🐍</div>
                       <h4 className="text-2xl font-bold text-purple-300">Ready to Play?</h4>
-                      <p className="text-slate-300 text-sm px-4">
-                        Use Arrow Keys to control the snake
+                      <p className="text-slate-300 text-sm">
+                        <span className="hidden md:inline">Use Arrow Keys or </span>
+                        <span className="md:hidden">Swipe or use buttons to control</span>
+                        <span className="hidden md:inline">on-screen buttons</span>
                       </p>
                       <button
                         onClick={startGame}
@@ -404,6 +466,58 @@ export default function SnakeGameCard() {
                 )}
               </div>
 
+              {/* Mobile Touch Controls */}
+              {gameStarted && !gameOver && (
+                <div className="mt-4 md:hidden">
+                  <div className="grid grid-cols-3 gap-2 max-w-[200px] mx-auto">
+                    <div></div>
+                    <button
+                      onClick={() => changeDirection('UP')}
+                      className="bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 active:scale-95 text-white font-bold py-4 rounded-lg shadow-lg shadow-purple-500/30 flex items-center justify-center transition-all"
+                    >
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 15l7-7 7 7" />
+                      </svg>
+                    </button>
+                    <div></div>
+                    
+                    <button
+                      onClick={() => changeDirection('LEFT')}
+                      className="bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 active:scale-95 text-white font-bold py-4 rounded-lg shadow-lg shadow-purple-500/30 flex items-center justify-center transition-all"
+                    >
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
+                      </svg>
+                    </button>
+                    <div className="flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-full bg-purple-900/30 border-2 border-purple-500/30"></div>
+                    </div>
+                    <button
+                      onClick={() => changeDirection('RIGHT')}
+                      className="bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 active:scale-95 text-white font-bold py-4 rounded-lg shadow-lg shadow-purple-500/30 flex items-center justify-center transition-all"
+                    >
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                    
+                    <div></div>
+                    <button
+                      onClick={() => changeDirection('DOWN')}
+                      className="bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 active:scale-95 text-white font-bold py-4 rounded-lg shadow-lg shadow-purple-500/30 flex items-center justify-center transition-all"
+                    >
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    <div></div>
+                  </div>
+                  <p className="text-center text-xs text-slate-400 mt-3">
+                    💡 Tip: You can also swipe to control
+                  </p>
+                </div>
+              )}
+
               {/* Controls Info */}
               <div className="mt-4 bg-slate-800/50 rounded-lg p-3 border border-slate-700/50">
                 <div className="grid grid-cols-2 gap-3 text-xs text-slate-300">
@@ -413,7 +527,8 @@ export default function SnakeGameCard() {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-cyan-400">⌨️</span>
-                    <span>Use arrow keys</span>
+                    <span className="hidden md:inline">Arrow keys</span>
+                    <span className="md:hidden">Swipe/Buttons</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-green-400">🌀</span>
