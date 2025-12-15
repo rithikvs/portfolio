@@ -57,7 +57,7 @@ export default function Hero() {
               <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </a>
             <a
-              href="RITHIK V S resume.pdf"
+              href="RITHIK V S - RESUME.pdf"
               download
               className="group relative w-full px-6 py-3 md:px-8 md:py-4 bg-slate-800/90 border-2 border-cyan-500/60 text-cyan-100 font-bold rounded-xl overflow-hidden shadow-lg shadow-slate-900/40 hover:shadow-2xl hover:shadow-cyan-500/50 hover:-translate-y-1 hover:border-cyan-400 transition-all duration-300"
             >

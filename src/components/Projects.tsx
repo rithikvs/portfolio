@@ -26,6 +26,15 @@ const projects: Project[] = [
     demo: 'https://study-fwpj.vercel.app/',
     image: 'studyhub.png',
   },
+   {
+    title: 'Air Writting System',
+    description:
+    'A camera-based application that allows users to write in the air using hand gestures and save notes as images or PDF files without touching the screen.',
+  tech: ['Python', 'OpenCV', 'MediaPipe', 'NumPy', 'Pillow', 'ReportLab'],
+  github: 'https://github.com/rithikvs/finger-writing-notebook',
+  demo: 'airwritting.mp4', 
+  image: 'air writting image.png',
+  },
   {
     title: 'Attendence management',
     description:
