@@ -24,12 +24,12 @@ export default function MathGame({ onClose }: MathGameProps) {
   const [questionCount, setQuestionCount] = useState(0)
   const [difficulty, setDifficulty] = useState<Difficulty>('easy')
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null)
-  const [timeLeft, setTimeLeft] = useState(4)
+  const [timeLeft, setTimeLeft] = useState(5)
   const [feedback, setFeedback] = useState<'correct' | 'wrong' | null>(null)
   const [isAnswering, setIsAnswering] = useState(false)
 
   const TOTAL_QUESTIONS = 15
-  const TIME_LIMIT = 4
+  const TIME_LIMIT = 5
 
   const generateQuestion = useCallback((diff: Difficulty): Question => {
     let num1: number, num2: number, operation: Operation, correctAnswer: number

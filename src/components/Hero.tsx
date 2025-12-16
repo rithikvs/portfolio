@@ -1,4 +1,4 @@
-import SnakeGameCard from './SnakeGameCard'
+import GameMenu from './GameMenu'
 
 export default function Hero() {
   return (
@@ -6,8 +6,8 @@ export default function Hero() {
       id="hero"
       className="section bg-transparent min-h-screen flex items-center justify-center relative overflow-hidden py-8 md:py-0"
     >
-      {/* Snake Game Card - Top Right Corner */}
-      <SnakeGameCard />
+      {/* Math Game - Top Right Corner */}
+      <GameMenu />
       <div className="container-max grid items-center gap-8 md:gap-16 md:grid-cols-2 w-full">
         
         {/* Left Content */}
