@@ -7,6 +7,7 @@ import Projects from './components/Projects'
 import Education from './components/Education'
 import Achievements from './components/Achievements'
 import Contact from './components/Contact'
+import RobotChatbot from './components/robot';
 
 function HomePage() {
   return (
@@ -35,6 +36,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
       </Routes>
+
+      {/* Floating robot assistant (always available) */}
+      <RobotChatbot />
     </div>
-  )
+  );
 }
