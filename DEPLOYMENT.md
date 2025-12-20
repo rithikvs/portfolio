@@ -14,7 +14,7 @@ npm audit fix
 npm install -g vercel
 ```
 
-### 3. **Deploy to   Vercel**
+### 3. **Deploy to  Vercel**
 
 **Option A: Deploy via Vercel CLI**
 ```bash
