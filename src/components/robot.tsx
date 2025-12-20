@@ -1,13 +1,29 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const RobotChatbot: React.FC = () => {
+  // Animation state for robot appearance
+  const [showRobot, setShowRobot] = useState(false);
+  // Only run the animation once on first mount
+  useEffect(() => {
+    // Show robot after short delay
+    const timer = setTimeout(() => setShowRobot(true), 300);
+    return () => clearTimeout(timer);
+  }, []);
+
   // Whether the chatbot panel is open or closed
   const [isOpen, setIsOpen] = useState(false);
 
   // All messages in the chat
-  const [messages, setMessages] = useState<
-    { id: number; sender: "bot" | "user"; text: string }[]
-  >([
+  type ExtraAction = { type: 'link'; href: string; label: string; download?: boolean };
+  type Message = {
+    id: number;
+    sender: "bot" | "user";
+    text: string;
+    sectionId?: string;
+    buttonText?: string;
+    extraActions?: ExtraAction[];
+  };
+  const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
       sender: "bot",
@@ -39,66 +55,58 @@ const RobotChatbot: React.FC = () => {
   const getBotReply = (input: string) => {
     const text = input.toLowerCase().trim();
 
+    // Helper to return content and button
+    const withButton = (content: string, sectionId: string, buttonText: string) => {
+      return { content, sectionId, buttonText };
+    };
+
     // Projects
     if (text.includes("project") || text.includes("work")) {
-      return {
-        type: "projects",
-        content: (
-          <>
-            <b>Projects 🚀</b>
-            <ul style={{margin: '8px 0'}}>
-              <li><b>E-Commerce Full Stack Website:</b> React, Node.js, MongoDB. <a href="https://github.com/rithikvs/e-commerse-fullstack" target="_blank" rel="noreferrer">GitHub</a></li>
-              <li><b>Study Hub:</b> Collaborative study platform. <a href="https://github.com/rithikvs/study" target="_blank" rel="noreferrer">GitHub</a></li>
-              <li><b>Air Writing System:</b> Write in air using hand gestures. <a href="https://github.com/rithikvs/finger-writing-notebook" target="_blank" rel="noreferrer">GitHub</a></li>
-              <li><b>Attendance Management:</b> React, Node.js, MongoDB. <a href="https://github.com/rithikvs/student_attendence" target="_blank" rel="noreferrer">GitHub</a></li>
-              <li><b>VoiceBridge:</b> AI-powered sign recognition. <a href="https://github.com/rithikvs/VoiceBridge" target="_blank" rel="noreferrer">GitHub</a></li>
-            </ul>
-            <button className="robot-skill-btn" onClick={() => {
-              const el = document.getElementById('projects');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}>See Projects</button>
-          </>
-        )
-      };
+      return withButton(
+        [
+          'Projects:',
+          '',
+          '• E-Commerce Full Stack Website: React, Node.js, MongoDB.',
+          '• Study Hub: Collaborative study platform.',
+          '• Air Writing System: Write in air using hand gestures.',
+          '• Attendance Management: React, Node.js, MongoDB.',
+          '• VoiceBridge: AI-powered sign recognition.',
+        ].join('\n'),
+        "projects",
+        "See Projects"
+      );
     }
 
     // Skills
     if (text.includes("skill") || text.includes("stack") || text.includes("tech")) {
-      return {
-        type: "skills",
-        content: (
-          <>
-            <b>Skills 💡</b>
-            <ul style={{margin: '8px 0'}}>
-              <li><b>Programming:</b> C, Java, Python</li>
-              <li><b>Libraries:</b> React.js</li>
-              <li><b>Frameworks:</b> Node.js, Express.js</li>
-              <li><b>Databases:</b> MySQL, MongoDB</li>
-              <li><b>Soft Skills:</b> Teamwork, Communication, Problem Solving, Adaptability, Time Management, Leadership</li>
-            </ul>
-            <button className="robot-skill-btn" onClick={() => {
-              const el = document.getElementById('skills');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}>See Skills</button>
-          </>
-        )
-      };
+      return withButton(
+        [
+          'Skills:',
+          '',
+          '• Programming: C, Java, Python',
+          '• Libraries: React.js',
+          '• Frameworks: Node.js, Express.js',
+          '• Databases: MySQL, MongoDB',
+          '• Soft Skills: Teamwork, Communication, Problem Solving, Adaptability, Time Management, Leadership',
+        ].join('\n'),
+        "skills",
+        "See Skills"
+      );
     }
 
     // Games
     if (text.includes("game")) {
       return {
-        type: "games",
-        content: (
-          <>
-            <b>Games 🎮</b>
-            <ul style={{margin: '8px 0'}}>
-              <li><b>Math Game:</b> Test your math skills interactively.</li>
-              <li><b>Memory Game:</b> Challenge your memory with a fun card game.</li>
-            </ul>
-            <span>Click the Play Games button on the top right to try them!</span>
-          </>
-        )
+        content: [
+          'Games:',
+          '',
+          '• Math Game: Test your math skills interactively.',
+          '• Memory Game: Challenge your memory with a fun card game.',
+          ' ',
+          'Click the Play Games button on the top right to try them!'
+        ].join('\n'),
+        sectionId: undefined,
+        buttonText: undefined
       };
     }
 
@@ -109,75 +117,64 @@ const RobotChatbot: React.FC = () => {
       text.includes("study") ||
       text.includes("degree")
     ) {
-      return {
-        type: "education",
-        content: (
-          <>
-            <b>Education 🎓</b>
-            <ul style={{margin: '8px 0'}}>
-              <li><b>KONGU ENGINEERING COLLEGE:</b> B.Tech in IT (2023-2027), CGPA: 7.81 (till 4th sem)</li>
-              <li><b>BHARANI VIDHYALAYA SR SEC SCHOOL (CBSE):</b> 12th (2022-2023), 70.4%</li>
-              <li><b>BHARANI VIDHYALAYA SR SEC SCHOOL (CBSE):</b> 10th (2021-2022), 80.1%</li>
-            </ul>
-            <button className="robot-skill-btn" onClick={() => {
-              const el = document.getElementById('education');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}>See Education</button>
-          </>
-        )
-      };
+      return withButton(
+        [
+          'Education:',
+          '',
+          '• KONGU ENGINEERING COLLEGE:',
+          '  B.Tech in IT (2023-2027), CGPA: 7.81 (till 4th sem)',
+          '• BHARANI VIDHYALAYA SR SEC SCHOOL (CBSE):',
+          '  12th (2022-2023), 70.4%',
+          '  10th (2021-2022), 80.1%',
+        ].join('\n'),
+        "education",
+        "See Education"
+      );
     }
 
     // Contact & Actions
     if (
+      text.includes("email") && !text.includes("contact") && !text.includes("reach") && !text.includes("hire") && !text.includes("download") && !text.includes("call")
+    ) {
+      return {
+        content: [
+          'Email',
+          '',
+          'Drop me an email anytime',
+          '',
+          'rithikvs08@gmail.com',
+        ].join('\n'),
+        extraActions: [
+          { type: 'link' as const, href: 'mailto:rithikvs08@gmail.com', label: 'Send Email' },
+        ]
+      };
+    }
+    if (
       text.includes("contact") ||
-      text.includes("email") ||
       text.includes("reach") ||
       text.includes("hire") ||
       text.includes("download") ||
       text.includes("call")
     ) {
       return {
-        type: "contact",
-        content: (
-          <>
-            <b>Contact & Actions 📬</b>
-            <ul style={{margin: '8px 0'}}>
-              <li>Use the Contact section form on this site</li>
-              <li>Email: <a href="mailto:rithikvs2005@gmail.com">rithikvs2005@gmail.com</a></li>
-              <li>GitHub: <a href="https://github.com/rithikvs" target="_blank" rel="noreferrer">github.com/rithikvs</a></li>
-              <li>LinkedIn: <a href="https://linkedin.com/in/rithikvs" target="_blank" rel="noreferrer">linkedin.com/in/rithikvs</a></li>
-            </ul>
-            <div style={{display:'flex', flexWrap:'wrap', gap:8, marginTop:8}}>
-              <a
-                href="/rithik.jpg"
-                download="rithik-profile.jpg"
-                className="robot-skill-btn"
-                style={{minWidth:120, textAlign:'center'}}>
-                Download Image
-              </a>
-              <a
-                href="/RITHIK V S - RESUME.pdf"
-                download
-                className="robot-skill-btn"
-                style={{minWidth:120, textAlign:'center'}}>
-                Download Resume
-              </a>
-              <a
-                href="tel:+919080123456"
-                className="robot-skill-btn"
-                style={{minWidth:120, textAlign:'center'}}>
-                Call Rithik
-              </a>
-              <a
-                href="mailto:rithikvs2005@gmail.com"
-                className="robot-skill-btn"
-                style={{minWidth:120, textAlign:'center'}}>
-                Mail Rithik
-              </a>
-            </div>
-          </>
-        )
+        content: [
+          'Contact & Actions:',
+          '',
+          '• Use the Contact section form on this site',
+          '• Email: rithikvs08@gmail.com',
+          '• GitHub: github.com/rithikvs',
+          '• LinkedIn: linkedin.com/in/rithikvs',
+          '',
+          'You can also:',
+        ].join('\n'),
+        sectionId: "contact",
+        buttonText: "See Contact",
+        extraActions: [
+          { type: 'link' as const, href: '/RITHIK V S - RESUME.pdf', label: 'Download Resume', download: true },
+          { type: 'link' as const, href: '/rithik.jpg', label: 'Download Photo', download: true },
+          { type: 'link' as const, href: 'tel:+919080123456', label: 'Call Rithik' },
+          { type: 'link' as const, href: 'mailto:rithikvs08@gmail.com', label: 'Mail Rithik' },
+        ]
       };
     }
 
@@ -189,29 +186,26 @@ const RobotChatbot: React.FC = () => {
       text.includes("yo")
     ) {
       return {
-        type: "greeting",
-        content: (
-          <>
-            Hello there! 👋<br />
-            I’m Rithik’s AI assistant 🤖.<br />
-            You can ask me about:<br />
-            - Projects<br />- Skills<br />- Games<br />- Education<br />- Contact details
-          </>
-        )
+        content: [
+          'Hello there! I’m Rithik’s AI assistant.',
+          '',
+          'You can ask me about:',
+          '• Projects',
+          '• Skills',
+          '• Games',
+          '• Education',
+          '• Contact details',
+        ].join('\n'),
+        sectionId: undefined,
+        buttonText: undefined
       };
     }
 
     // Fallback generic answer
     return {
-      type: "fallback",
-      content: (
-        <>
-          That’s an interesting question! 🤔<br />
-          I’m currently best at answering things about:<br />
-          - Rithik’s projects<br />- Skills & technologies<br />- Games<br />- Education<br />- Contact details<br /><br />
-          Try asking: “What skills does Rithik have?” or “How can I contact Rithik?”
-        </>
-      )
+      content: "That’s an interesting question! I’m best at answering things about Rithik’s projects, skills, games, education, or contact details. Try asking: 'What skills does Rithik have?' or 'How can I contact Rithik?'",
+      sectionId: undefined,
+      buttonText: undefined
     };
   };
 
@@ -238,10 +232,13 @@ const RobotChatbot: React.FC = () => {
     // Create bot reply with small delay to mimic typing
     setTimeout(() => {
       const botReply = getBotReply(trimmed);
-      const botMessage = {
+      const botMessage: Message = {
         id: Date.now() + 1,
-        sender: "bot" as const,
-        text: botReply
+        sender: "bot",
+        text: typeof botReply === 'string' ? botReply : botReply.content,
+        sectionId: typeof botReply === 'object' ? botReply.sectionId : undefined,
+        buttonText: typeof botReply === 'object' ? botReply.buttonText : undefined,
+        extraActions: typeof botReply === 'object' && 'extraActions' in botReply ? botReply.extraActions : undefined
       };
       setMessages((prev) => [...prev, botMessage]);
       setIsTyping(false);
@@ -256,7 +253,7 @@ const RobotChatbot: React.FC = () => {
         onClick={toggleChat}
         aria-label="Open Rithik's AI assistant"
       >
-        <div className="robot-fullbody">
+        <div className={`robot-fullbody${showRobot ? ' robot-appear-effect' : ''}`}> 
           <div className="robot-antenna" />
           <div className="robot-head">
             <div className="robot-eyes">
@@ -309,10 +306,61 @@ const RobotChatbot: React.FC = () => {
                 )}
 
                 <div className={`robot-message-bubble ${msg.sender}`}>
-                  {typeof msg.text === 'string' ? (
-                    msg.text.split("\n").map((line, idx) => <p key={idx}>{line}</p>)
-                  ) : (
-                    msg.text.content
+                  {msg.text.split("\n").map((line, idx) => <p key={idx}>{line}</p>)}
+                  {msg.sender === 'bot' && msg.sectionId && msg.buttonText && (
+                    <button
+                      className="robot-skill-btn"
+                      style={{ marginTop: 8, minWidth: 120, textAlign: 'center' }}
+                      onClick={() => {
+                        if (msg.sectionId) {
+                          const el = document.getElementById(msg.sectionId);
+                          if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
+                    >
+                      {msg.buttonText}
+                    </button>
+                  )}
+                  {/* Extra actions for contact */}
+                  {msg.sender === 'bot' && Array.isArray(msg.extraActions) && (
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 8 }}>
+                      {msg.extraActions.map((action, i) =>
+                        action.type === 'link' ? (
+                          action.href.startsWith('mailto:') ? (
+                            <button
+                              key={i}
+                              className="robot-skill-btn"
+                              style={{ minWidth: 120, textAlign: 'center' }}
+                              onClick={() => {
+                                window.location.href = action.href;
+                              }}
+                            >
+                              {action.label}
+                            </button>
+                          ) : (
+                            <a
+                              key={i}
+                              href={action.href}
+                              className="robot-skill-btn"
+                              style={{ minWidth: 120, textAlign: 'center' }}
+                              {...(action.download ? { download: true } : {})}
+                              target={
+                                action.href.startsWith('http')
+                                  ? '_blank'
+                                  : undefined
+                              }
+                              rel={
+                                action.href.startsWith('http')
+                                  ? 'noopener noreferrer'
+                                  : undefined
+                              }
+                            >
+                              {action.label}
+                            </a>
+                          )
+                        ) : null
+                      )}
+                    </div>
                   )}
                 </div>
               </div>

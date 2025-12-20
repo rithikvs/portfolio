@@ -26,12 +26,16 @@ export default function Contact() {
               <h3 className="text-2xl font-bold text-white mb-3 drop-shadow-md">Email</h3>
               <p className="text-slate-100 mb-4 font-medium">Drop me an email anytime</p>
               <div className="flex flex-col items-center w-full">
-                <a
-                  href="mailto:rithikvs08@gmail.com?subject=Portfolio%20Contact&body=Hello%20Rithik,%0A%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20connect.%0A%0ABest%20regards,%0A"
+                <button
+                  type="button"
                   className="w-full btn-primary justify-center"
+                  onClick={() => {
+                    window.location.href =
+                      'mailto:rithikvs08@gmail.com?subject=Portfolio%20Contact&body=Hello%20Rithik,%0A%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20connect.%0A%0ABest%20regards,%0A';
+                  }}
                 >
                   rithikvs08@gmail.com
-                </a>
+                </button>
                 
               </div>
             </div>
