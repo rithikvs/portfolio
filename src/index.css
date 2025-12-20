@@ -761,7 +761,7 @@ html {
 .robot-leg {
   width: 16px;
   height: 38px;
-  background: #22c55e;
+  background: #27ce64;
   border-radius: 10px;
   border-bottom: 6px solid #065f46;
   animation: legStep 0.5s infinite alternate ease-in-out;
