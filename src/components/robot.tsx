@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const RobotChatbot: React.FC = () => {
+interface RobotChatbotProps {
+  mobileModeOnly?: boolean;
+  headOnly?: boolean;
+}
+
+const RobotChatbot: React.FC<RobotChatbotProps> = ({ mobileModeOnly = false, headOnly = false }) => {
   // Animation state for robot appearance
   const [showRobot, setShowRobot] = useState(false);
   // Only run the animation once on first mount
@@ -244,6 +249,27 @@ const RobotChatbot: React.FC = () => {
       setIsTyping(false);
     }, 800); // 0.8s delay for nicer UX
   };
+
+  // If mobileModeOnly, only show on mobile (block on mobile, hidden on md+)
+  // If headOnly, render just the robot head (for Hero section)
+  if (mobileModeOnly && typeof window !== 'undefined') {
+    const isMobile = window.innerWidth < 768;
+    if (!isMobile) return null;
+  }
+
+  if (headOnly) {
+    return (
+      <div className={`robot-fullbody${showRobot ? ' robot-appear-effect' : ''}`} style={{ width: 60, height: 60, minWidth: 40, minHeight: 40 }}>
+        <div className="robot-antenna" />
+        <div className="robot-head">
+          <div className="robot-eyes">
+            <span className="eye left-eye" />
+            <span className="eye right-eye" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>

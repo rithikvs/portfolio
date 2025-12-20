@@ -1,4 +1,6 @@
+
 import GameMenu from './GameMenu'
+import RobotChatbot from './robot'
 
 export default function Hero() {
   return (
@@ -8,10 +10,16 @@ export default function Hero() {
     >
       {/* Math Game - Top Right Corner */}
       <GameMenu />
-      <div className="container-max grid items-center gap-8 md:gap-16 md:grid-cols-2 w-full">
+      <div className="container-max grid items-center gap-8 md:gap-16 md:grid-cols-2 w-full relative">
         
         {/* Left Content */}
-        <div className="text-center md:text-left space-y-4 md:space-y-6 order-2 md:order-1">
+        <div className="text-center md:text-left space-y-4 md:space-y-6 order-2 md:order-1 relative">
+          {/* Show robot only on mobile, near name */}
+          <div className="block md:hidden w-full flex justify-center items-center mb-2">
+            <div style={{ position: 'relative', zIndex: 20 }}>
+              <RobotChatbot mobileModeOnly headOnly />
+            </div>
+          </div>
           <div className="inline-flex items-center gap-2 rounded-full bg-cyan-500/20 border border-cyan-300/40 px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm text-cyan-100 shadow-xl shadow-cyan-500/30">
             <span className="animate-wave inline-block">👋</span>
             <span>Welcome to my portfolio</span>

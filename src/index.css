@@ -375,8 +375,8 @@ html {
     min-height: 60px;
     bottom: 12px;
     right: 12px;
-    left: 0;
-    margin: 0 auto;
+    left: auto;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -418,6 +418,11 @@ html {
   .robot-send-button {
     font-size: 1.2rem;
     padding: 8px 12px;
+  }
+
+  /* Hide floating robot button on mobile if in Hero */
+  body #hero .robot-chatbot-toggle {
+    display: none !important;
   }
 }
 
