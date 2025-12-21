@@ -14,12 +14,8 @@ export default function Hero() {
         
         {/* Left Content */}
         <div className="text-center md:text-left space-y-4 md:space-y-6 order-2 md:order-1 relative">
-          {/* Show robot only on mobile, near name */}
-          <div className="block md:hidden w-full flex justify-center items-center mb-2">
-            <div style={{ position: 'relative', zIndex: 20 }}>
-              <RobotChatbot mobileModeOnly headOnly />
-            </div>
-          </div>
+          {/* Hide robot in left content on mobile, now handled under image */}
+          <div className="robot-hero-mobile-container" style={{ display: 'none' }} />
           <div className="inline-flex items-center gap-2 rounded-full bg-cyan-500/20 border border-cyan-300/40 px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm text-cyan-100 shadow-xl shadow-cyan-500/30">
             <span className="animate-wave inline-block">👋</span>
             <span>Welcome to my portfolio</span>
@@ -78,7 +74,7 @@ export default function Hero() {
         </div>
 
         {/* Right Profile Image */}
-        <div className="justify-self-center relative group order-1 md:order-2">
+        <div className="justify-self-center relative group order-1 md:order-2 profile-image-robot-wrapper">
           <div
             className="absolute -inset-4 md:-inset-8 rounded-full bg-gradient-to-r from-cyan-500 via-blue-400 to-cyan-600 opacity-40 blur-3xl animate-pulse group-hover:opacity-60 transition-opacity duration-500"
             aria-hidden
@@ -89,6 +85,10 @@ export default function Hero() {
               alt="Profile"
               className="w-full h-full object-cover object-center scale-110 transition-transform duration-500 group-hover:scale-125"
             />
+          </div>
+          {/* Robot under image on mobile, fixed and centered */}
+          <div className="robot-hero-mobile-container-img">
+            <RobotChatbot mobileModeOnly={true} headOnly={false} />
           </div>
         </div>
       </div>

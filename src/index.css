@@ -1,4 +1,43 @@
+/* Robot under profile image on mobile, fixed and centered */
+.robot-hero-mobile-container-img {
+  display: none;
+}
 
+@media (max-width: 640px) {
+  .robot-hero-mobile-container-img {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: calc(110px + 8vw); /* Adjust to match image bottom */
+    z-index: 30;
+    width: 100vw;
+    pointer-events: none;
+  }
+  .robot-hero-mobile-container-img .robot-fullbody {
+    transform: scale(0.6);
+    max-width: 90px;
+    max-height: 90px;
+    min-width: 60px;
+    min-height: 60px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+  }
+  /* Hide the old robot in left content on mobile */
+  .robot-hero-mobile-container {
+    display: none !important;
+  }
+}
+
+@media (min-width: 641px) {
+  .robot-hero-mobile-container-img {
+    display: none !important;
+  }
+}
 /* Full Robot Body for Floating Button */
 
 .robot-fullbody {
