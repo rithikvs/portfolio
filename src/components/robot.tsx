@@ -252,10 +252,7 @@ const RobotChatbot: React.FC<RobotChatbotProps> = ({ mobileModeOnly = false, hea
 
   // If mobileModeOnly, only show on mobile (block on mobile, hidden on md+)
   // If headOnly, render just the robot head (for Hero section)
-  if (mobileModeOnly && typeof window !== 'undefined') {
-    const isMobile = window.innerWidth < 768;
-    if (!isMobile) return null;
-  }
+  // Remove mobileModeOnly restriction so robot always renders when used
 
   if (headOnly) {
     return (

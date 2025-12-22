@@ -37,8 +37,6 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
       </Routes>
 
-      {/* Floating robot assistant (always available) */}
-      <RobotChatbot />
     </div>
   );
 }

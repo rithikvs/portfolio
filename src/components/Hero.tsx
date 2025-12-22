@@ -88,7 +88,11 @@ export default function Hero() {
           </div>
           {/* Robot under image on mobile, fixed and centered */}
           <div className="robot-hero-mobile-container-img">
-            <RobotChatbot mobileModeOnly={true} headOnly={false} />
+            <RobotChatbot headOnly />
+          </div>
+          {/* Robot floating button on desktop only */}
+          <div className="robot-hero-desktop-fixed">
+            <RobotChatbot />
           </div>
         </div>
       </div>

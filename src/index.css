@@ -1,3 +1,19 @@
+/* Desktop floating robot only visible on md+ */
+.robot-hero-desktop-fixed {
+  display: none;
+}
+@media (min-width: 641px) {
+  .robot-hero-desktop-fixed {
+    display: block;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+  }
+  .robot-hero-mobile-container-img {
+    display: none !important;
+  }
+}
 /* Robot under profile image on mobile, fixed and centered */
 .robot-hero-mobile-container-img {
   display: none;
@@ -17,11 +33,11 @@
     pointer-events: none;
   }
   .robot-hero-mobile-container-img .robot-fullbody {
-    transform: scale(0.6);
-    max-width: 90px;
-    max-height: 90px;
-    min-width: 60px;
-    min-height: 60px;
+    transform: scale(0.45);
+    max-width: 70px;
+    max-height: 70px;
+    min-width: 40px;
+    min-height: 40px;
     margin: 0 auto;
     left: 0;
     right: 0;
