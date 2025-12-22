@@ -30,7 +30,7 @@ export default function Hero() {
                 WebkitTextStroke: '1px rgba(6, 182, 212, 0.3)',
                 textShadow: '0 0 30px rgba(6, 182, 212, 0.5), 0 0 60px rgba(6, 182, 212, 0.3)'
               }}>
-                RITHIK V S
+                RITHIK V Ssss
               </span>
             </h1>
           </div>
