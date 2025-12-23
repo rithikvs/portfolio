@@ -10,17 +10,19 @@ export default function Hero() {
     >
       {/* Math Game - Top Right Corner */}
       <GameMenu />
+
+      {/* Mobile: Robot in top left under Portfolio */}
+      <div className="robot-hero-mobile-top-left">
+        <RobotChatbot />
+      </div>
+
       <div className="container-max grid items-center gap-8 md:gap-16 md:grid-cols-2 w-full relative">
-        
         {/* Left Content */}
         <div className="text-center md:text-left space-y-4 md:space-y-6 order-2 md:order-1 relative">
-          {/* Hide robot in left content on mobile, now handled under image */}
-          <div className="robot-hero-mobile-container" style={{ display: 'none' }} />
           <div className="inline-flex items-center gap-2 rounded-full bg-cyan-500/20 border border-cyan-300/40 px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm text-cyan-100 shadow-xl shadow-cyan-500/30">
             <span className="animate-wave inline-block">👋</span>
             <span>Welcome to my portfolio</span>
           </div>
-          
           <div className="space-y-4 md:space-y-6">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-center md:text-left">
               <span className="block text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3">Hi, I'm</span>
@@ -34,11 +36,9 @@ export default function Hero() {
               </span>
             </h1>
           </div>
-
           <p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-lg mx-auto md:mx-0 leading-relaxed font-normal italic my-4 md:my-8 px-4 md:px-0">
             A passionate student building modern websites and learning new technologies to create meaningful digital experiences.
           </p>
-
           <div className="flex flex-col items-center md:items-start gap-3 md:gap-5 max-w-md mx-auto md:mx-0 px-4 md:px-0">
             <a
               href="#contact"
@@ -85,10 +85,6 @@ export default function Hero() {
               alt="Profile"
               className="w-full h-full object-cover object-center scale-110 transition-transform duration-500 group-hover:scale-125"
             />
-          </div>
-          {/* Robot under image on mobile, fixed and centered */}
-          <div className="robot-hero-mobile-container-img">
-            <RobotChatbot headOnly />
           </div>
           {/* Robot floating button on desktop only */}
           <div className="robot-hero-desktop-fixed">

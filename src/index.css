@@ -1,3 +1,27 @@
+/* Robot in top left on mobile under Portfolio */
+.robot-hero-mobile-top-left {
+  display: none;
+}
+@media (max-width: 640px) {
+  .robot-hero-mobile-top-left {
+    display: flex;
+    position: fixed;
+    top: 60px; /* below navbar */
+    left: 12px;
+    z-index: 10001;
+    align-items: flex-start;
+    pointer-events: auto;
+  }
+  /* Hide floating robot button on mobile except in top left */
+  .robot-hero-desktop-fixed {
+    display: none !important;
+  }
+}
+@media (min-width: 641px) {
+  .robot-hero-mobile-top-left {
+    display: none !important;
+  }
+}
 /* Desktop floating robot only visible on md+ */
 .robot-hero-desktop-fixed {
   display: none;
