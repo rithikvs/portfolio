@@ -12,8 +12,9 @@ export default function Hero() {
       <GameMenu />
 
       {/* Mobile: Robot in top left under Portfolio */}
+      {/* Mobile: Robot in top left under Portfolio, small size */}
       <div className="robot-hero-mobile-top-left">
-        <RobotChatbot />
+        <RobotChatbot mobileModeOnly />
       </div>
 
       <div className="container-max grid items-center gap-8 md:gap-16 md:grid-cols-2 w-full relative">

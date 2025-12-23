@@ -1,16 +1,31 @@
 /* Robot in top left on mobile under Portfolio */
+
 .robot-hero-mobile-top-left {
   display: none;
 }
 @media (max-width: 640px) {
   .robot-hero-mobile-top-left {
-    display: flex;
+    display: flex !important;
     position: fixed;
-    top: 60px; /* below navbar */
-    left: 12px;
+    top: 56px; /* just below navbar */
+    left: 8px;
     z-index: 10001;
     align-items: flex-start;
     pointer-events: auto;
+    width: 60px;
+    height: 60px;
+  }
+  .robot-hero-mobile-top-left .robot-fullbody {
+    transform: scale(0.45) !important;
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 60px;
+    max-height: 60px;
+    margin: 0;
+    left: 0;
+    right: 0;
+    pointer-events: auto;
+    opacity: 1 !important;
   }
   /* Hide floating robot button on mobile except in top left */
   .robot-hero-desktop-fixed {
