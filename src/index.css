@@ -11,9 +11,24 @@
     left: 8px;
     z-index: 10001;
     align-items: flex-start;
+    pointer-events: none;
+    width: 60px;
+    height: 60px;
+  }
+  .robot-hero-mobile-top-left .robot-chatbot-toggle {
     pointer-events: auto;
     width: 60px;
     height: 60px;
+    min-width: 40px;
+    min-height: 40px;
+    background: none;
+    box-shadow: none;
+    right: unset;
+    bottom: unset;
+    left: unset;
+    top: unset;
+    margin: 0;
+    z-index: 10002;
   }
   .robot-hero-mobile-top-left .robot-fullbody {
     transform: scale(0.45) !important;
@@ -24,7 +39,7 @@
     margin: 0;
     left: 0;
     right: 0;
-    pointer-events: auto;
+    pointer-events: none;
     opacity: 1 !important;
   }
   /* Hide floating robot button on mobile except in top left */

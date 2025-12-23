@@ -6,11 +6,8 @@ interface RobotChatbotProps {
 }
 
 const RobotChatbot: React.FC<RobotChatbotProps> = ({ mobileModeOnly = false, headOnly = false }) => {
-  // If mobileModeOnly, only render on mobile (max-width: 640px)
-  if (mobileModeOnly && typeof window !== 'undefined') {
-    const isMobile = window.matchMedia('(max-width: 640px)').matches;
-    if (!isMobile) return null;
-  }
+  // If mobileModeOnly, only render on mobile (max-width: 640px) -- use CSS only, always render
+  // This avoids SSR/CSR mismatch and ensures robot is always in DOM, CSS controls visibility
   // Animation state for robot appearance
   const [showRobot, setShowRobot] = useState(false);
   // Only run the animation once on first mount
