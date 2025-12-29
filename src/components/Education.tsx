@@ -23,7 +23,7 @@ const education: Edu[] = [
   { 
     school: 'BHARANI VIDHYALAYA SR SEC SCHOOL (CBSE)', 
     degree: '10th', 
-    period: '2021-2022', 
+    period: '2020-2021', 
     details: 'Percentage: 80.1%', 
     marksheet: 'rithik 10th marksheet.pdf'
   },
