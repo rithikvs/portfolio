@@ -35,6 +35,7 @@ export default function Hero() {
               }}>
                 RITHIK V S
               </span>
+             
             </h1>
           </div>
           <p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-lg mx-auto md:mx-0 leading-relaxed font-normal italic my-4 md:my-8 px-4 md:px-0">

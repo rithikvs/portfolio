@@ -1,13 +1,16 @@
-import { Route, Routes } from 'react-router-dom'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Skills from './components/Skills'
-import Projects from './components/Projects'
-import Education from './components/Education'
-import Achievements from './components/Achievements'
-import Contact from './components/Contact'
+
+import { Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import About from './components/About';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Education from './components/Education';
+import Achievements from './components/Achievements';
+import Contact from './components/Contact';
 import RobotChatbot from './components/robot';
+import CinematicRobotIntro from './components/CinematicRobotIntro';
+import React, { useState } from 'react';
 
 function HomePage() {
   return (
@@ -24,19 +27,32 @@ function HomePage() {
 }
 
 export default function App() {
+  const [showIntro, setShowIntro] = useState(true);
+  const [contentVisible, setContentVisible] = useState(false);
+  // Delay hiding the intro until fade-out is complete (600ms)
+  const handleEnter = () => {
+    setShowIntro(false);
+    setContentVisible(true);
+  };
   return (
-    <div
-      className="min-h-screen bg-fixed bg-cover bg-center"
-      style={{
-        backgroundImage:
-          "linear-gradient(135deg, rgba(62, 151, 246, 0.9) 0%, rgba(32, 20, 137, 0.95) 50%, rgba(15, 23, 42, 0.98) 100%)",
-      }}
-    >
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-      </Routes>
-
-    </div>
+    <>
+      {showIntro && (
+        <CinematicRobotIntro onEnter={handleEnter} />
+      )}
+      {contentVisible && (
+        <div
+          className="portfolio-content-zoom min-h-screen bg-fixed bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "linear-gradient(135deg, rgba(62, 151, 246, 0.9) 0%, rgba(32, 20, 137, 0.95) 50%, rgba(15, 23, 42, 0.98) 100%)",
+          }}
+        >
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+          </Routes>
+        </div>
+      )}
+    </>
   );
 }
