@@ -1,6 +1,8 @@
 
-import GameMenu from './GameMenu'
-import RobotChatbot from './robot'
+
+import GameMenu from './GameMenu';
+import RobotChatbot from './robot';
+import TypingAnimation from './TypingAnimation';
 
 export default function Hero() {
   return (
@@ -35,7 +37,19 @@ export default function Hero() {
               }}>
                 RITHIK V S
               </span>
-             
+              <div className="mt-2 md:mt-4 text-lg md:text-2xl font-semibold text-cyan-200 flex flex-wrap items-center gap-2">
+                <span>"I am passionate in</span>
+                <TypingAnimation
+                  words={[
+                    'Full Stack Developer"',
+                    'UI/UX Developer"',
+                    'MERN Stack Developer"',
+                  ]}
+                  typingSpeed={120}
+                  pause={1200}
+                  colors={["text-yellow-400","text-green-400","text-blue-400"]}
+                />
+              </div>
             </h1>
           </div>
           <p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-lg mx-auto md:mx-0 leading-relaxed font-normal italic my-4 md:my-8 px-4 md:px-0">
@@ -47,7 +61,7 @@ export default function Hero() {
               className="group relative w-full px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold rounded-xl overflow-hidden shadow-lg shadow-cyan-500/40 hover:shadow-2xl hover:shadow-cyan-400/60 hover:-translate-y-1 transition-all duration-300"
             >
               <span className="relative z-10 flex items-center justify-center gap-2 text-base md:text-lg">
-                🚀 Contact Me
+                Hire Me🚀
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </a>
