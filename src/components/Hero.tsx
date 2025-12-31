@@ -27,9 +27,9 @@ export default function Hero() {
             <span>Welcome to my portfolio</span>
           </div>
           <div className="space-y-4 md:space-y-6">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-center md:text-left">
-              <span className="block text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3">Hi, I'm</span>
-              <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-blue-300 to-cyan-400 drop-shadow-2xl break-words" style={{
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-center md:text-left">
+              <span className="block text-white text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3">Hi, I'm</span>
+              <span className="block text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-blue-300 to-cyan-400 drop-shadow-2xl break-words" style={{
                 backgroundSize: '200% 200%',
                 animation: 'gradient 3s ease infinite',
                 WebkitTextStroke: '1px rgba(6, 182, 212, 0.3)',
@@ -37,18 +37,20 @@ export default function Hero() {
               }}>
                 RITHIK V S
               </span>
-              <div className="mt-2 md:mt-4 text-lg md:text-2xl font-semibold text-cyan-200 flex flex-wrap items-center gap-2">
-                <span>"I am passionate in</span>
-                <TypingAnimation
-                  words={[
-                    'Full Stack Developer"',
-                    'UI/UX Developer"',
-                    'MERN Stack Developer"',
-                  ]}
-                  typingSpeed={120}
-                  pause={1200}
-                  colors={["text-yellow-400","text-green-400","text-blue-400"]}
-                />
+              <div className="mt-2 md:mt-4 text-sm xs:text-base sm:text-lg md:text-2xl font-semibold text-cyan-200 flex flex-wrap items-center gap-2">
+                <span className="text-base xs:text-lg sm:text-xl md:text-2xl whitespace-nowrap">"I am passionate in</span>
+                <span className="text-sm xs:text-base sm:text-lg md:text-xl font-bold whitespace-nowrap">
+                  <TypingAnimation
+                    words={[
+                      'Full Stack Developer"',
+                      'UI/UX Developer"',
+                      'MERN Stack Developer"',
+                    ]}
+                    typingSpeed={120}
+                    pause={1200}
+                    colors={["text-yellow-400","text-green-400","text-blue-400"]}
+                  />
+                </span>
               </div>
             </h1>
           </div>
